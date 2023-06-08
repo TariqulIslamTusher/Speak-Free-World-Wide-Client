@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 // import required modules
-import { EffectCoverflow, Pagination } from "swiper";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper";
 
 const InstructorSection = () => {
     return (
@@ -20,6 +20,10 @@ const InstructorSection = () => {
                 grabCursor={true}
                 centeredSlides={true}
                 slidesPerView={"auto"}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
                 coverflowEffect={{
                     rotate: 50,
                     stretch: 0,
@@ -28,7 +32,7 @@ const InstructorSection = () => {
                     slideShadows: true,
                 }}
                 pagination={true}
-                modules={[EffectCoverflow, Pagination]}
+                modules={[EffectCoverflow, Pagination, Autoplay]}
                 className="mySwiper"
             >
                 {/* TODO: Swiper to be implemented */}

@@ -15,7 +15,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 const Banner = () => {
     return (
-        <div className='relative'>
+        <div className='relative py-7'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

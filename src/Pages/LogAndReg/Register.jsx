@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
-    const { createAcctWithEmail, setUser, loader, setLoader, handleGoogle ,signOutUser, LoginWithEmail } = useContext(AuthContext)
+    const { createAcctWithEmail, setUser, loader, setLoader, handleGoogle, signOutUser, LoginWithEmail } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -33,6 +33,8 @@ const Register = () => {
         createAcctWithEmail(email, password)
             .then(res => {
                 const loggedUser = res.user;
+                console.log(loggedUser);
+                
                 // calling the photo and url updating function
                 updatePhotoAndUrl(loggedUser)
                     .then(() => {
@@ -41,17 +43,19 @@ const Register = () => {
                     .catch((error) => {
                         console.log(error);
                     });
+
                 setUser(loggedUser);
                 signOutUser()
                 LoginWithEmail(email, password)
-                .then(res => {
-                    navigate(location?.state?.pathname || '/', { replace: true })
-                }) .catch(err => {
-                    console.log(err);
-                })
+                    .then(res => {
+                        navigate(location?.state?.pathname || '/', { replace: true })
+                    }).catch(err => {
+                        console.log(err);
+                    })
             })
             .catch(err => {
                 toast.error(err.message)
+                setLoader(false)
                 console.log(err);
             })
 
@@ -63,7 +67,7 @@ const Register = () => {
         }
     }
 
-    
+
     // handleGoogle function
     const googleLogin = () => {
         handleGoogle()
