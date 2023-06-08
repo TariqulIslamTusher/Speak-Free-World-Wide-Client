@@ -9,6 +9,7 @@ import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import Register from "./Pages/LogAndReg/Register";
 import Instructors from "./Pages/Instructors/Instructors";
 import Classes from "./Pages/AllClasses/Classes";
+import DashBoard from "./Pages/DashBoard/DashBoard";
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/dashboard',
+                element: <DashBoard></DashBoard>
             },
             {
                 path: '/instructor',

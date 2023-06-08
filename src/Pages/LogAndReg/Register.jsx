@@ -5,12 +5,13 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import { AuthContext } from '../../Components/AuthProvider/Authprovider';
 import { useForm } from 'react-hook-form';
 import { FaExpandArrowsAlt, FaGoogle } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
-    const { createAcctWithEmail, setUser, loader, setLoader, handleGoogle } = useContext(AuthContext)
+    const { createAcctWithEmail, setUser, loader, setLoader, handleGoogle ,signOutUser, LoginWithEmail } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -41,9 +42,16 @@ const Register = () => {
                         console.log(error);
                     });
                 setUser(loggedUser);
-                navigate(location?.state?.pathname || '/', { replace: true })
+                signOutUser()
+                LoginWithEmail(email, password)
+                .then(res => {
+                    navigate(location?.state?.pathname || '/', { replace: true })
+                }) .catch(err => {
+                    console.log(err);
+                })
             })
             .catch(err => {
+                toast.error(err.message)
                 console.log(err);
             })
 
@@ -65,6 +73,7 @@ const Register = () => {
                 navigate(location?.state?.pathname || '/', { replace: true })
             })
             .catch(err => {
+                toast.error(err.message)
                 console.log(err);
             })
     }
@@ -73,6 +82,7 @@ const Register = () => {
 
     return (
         <div className='bg-slate-200 py-6'>
+            {/* <ToastContainer></ToastContainer> */}
             <div className='flex flex-col md:flex-row gap-4 items-center container mx-auto'>
                 <div className='w-1/2 hidden md:block'>
                     <Player
@@ -126,9 +136,11 @@ const Register = () => {
                             <input className='border border-slate-500 w-full px-3 py-2 rounded-md' type="password" placeholder="Confirm Password" {...register("confirmPass", {
                                 required: true, minLength: 6,
                                 validate: value =>
-                                    value === watch('password') || "The passwords do not match"
+                                    value === watch('password') || "The passwords does not match"
                             })} />
-                            {errors.confirmPass && <p className='text-red-500'>{errors.confirmPass.message}</p>}
+                            {errors.confirmPass?.type === 'validate' && <p className='text-red-500'>{errors.confirmPass.message}</p>}
+                            {errors.confirmPass?.type === 'required' && <p className='text-red-500'>Confirm password is required</p>}
+                            {errors.confirmPass?.type === 'minLength' && <p className='text-red-500'>Password must have at least 6 caracters</p>}
                         </div>
 
                         {/* photoURL  */}

@@ -55,7 +55,7 @@ const Navbar = () => {
 
                             {
                                 user && <NavLink className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "active" : ""} to='/'>
+                                    isPending ? "pending" : isActive ? "active" : ""} to='/dashboard'>
                                     <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>Dashboard </li>
                                 </NavLink>
                             }
@@ -106,7 +106,7 @@ const Navbar = () => {
 
                             {
                                 user && <NavLink className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "active" : ""} to='/'>
+                                    isPending ? "pending" : isActive ? "active" : ""} to='/dashboard'>
                                     <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>Dashboard </li>
                                 </NavLink>
                             }
