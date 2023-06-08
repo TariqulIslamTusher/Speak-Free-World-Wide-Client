@@ -3,8 +3,18 @@
 @tailwind utilities;
 
 .active{
-    @apply text-blue-600
+    @apply text-yellow-500
 }
 .pending{
-    @apply text-yellow-600
+    @apply text-green-400
+}
+
+.custom-text{
+    @apply text-center font-bold text-transparent bg-gradient-to-b from-cyan-700 to-yellow-400 bg-clip-text p-4
+
+}
+
+/* Custom button as Cbutton */
+.Cbutton{
+    @apply btn btn-accent bg-yellow-500 font-bold hover:bg-yellow-400 border-0 transition-all duration-150
 }

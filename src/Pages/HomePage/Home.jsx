@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Components/AuthProvider/Authprovider';
+import Banner from './Banner';
 
 const Home = () => {
     const {user} = useContext(AuthContext)
     return (
-        <div>
-            This is home page you k nnow {user.name}
+        <div className=' bg-yellow-100'>
+            <Banner></Banner>
         </div>
     );
 };
