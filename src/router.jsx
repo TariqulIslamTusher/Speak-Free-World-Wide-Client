@@ -10,6 +10,7 @@ import Register from "./Pages/LogAndReg/Register";
 import Instructors from "./Pages/Instructors/Instructors";
 import Classes from "./Pages/AllClasses/Classes";
 import DashBoard from "./Pages/DashBoard/DashBoard";
+import DashbordLayouts from "./Layouts/DashbordLayouts";
 
 export const router = createBrowserRouter([
     {
@@ -20,10 +21,6 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
-            },
-            {
-                path: '/dashboard',
-                element: <DashBoard></DashBoard>
             },
             {
                 path: '/instructor',
@@ -40,6 +37,16 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            }
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <DashbordLayouts></DashbordLayouts>,
+        children:[
+            {
+                path: '/dashboard',
+                element: <DashBoard></DashBoard>
             }
         ]
     }
