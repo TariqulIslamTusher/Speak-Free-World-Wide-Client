@@ -9,21 +9,40 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 // import required modules
 import { EffectCoverflow, Pagination, Autoplay } from "swiper";
+import useAxiosSecure from '../../CustomHook/AxiosHook/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+import Loader from '../Loader/Loader';
 
 const InstructorSection = () => {
+
+    const [AxiosSecure] = useAxiosSecure()
+
+    const { isLoading, data = [] } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:3000/class')
+            return res.json()
+        }
+    })
+    console.log(data, isLoading)
+
+    if (isLoading) {
+        return <Loader></Loader>
+    }
+
     return (
         <div>
             <SectionTitle heading='Our Top Instructores' subHeading='Familiar basis on student attendence'></SectionTitle>
 
             <Swiper
+                autoplay={{
+                    delay: 1500,
+                    disableOnInteraction: false,
+                }}
                 effect={"coverflow"}
                 grabCursor={true}
                 centeredSlides={true}
-                slidesPerView={"auto"}
-                autoplay={{
-                  delay: 2500,
-                  disableOnInteraction: false,
-                }}
+                slidesPerView={3}
                 coverflowEffect={{
                     rotate: 50,
                     stretch: 0,
@@ -32,21 +51,19 @@ const InstructorSection = () => {
                     slideShadows: true,
                 }}
                 pagination={true}
-                modules={[EffectCoverflow, Pagination, Autoplay]}
+                modules={[EffectCoverflow, Pagination]}
                 className="mySwiper"
             >
-                {/* TODO: Swiper to be implemented */}
-                <SwiperSlide>1</SwiperSlide>
-                <SwiperSlide>2</SwiperSlide>
-                <SwiperSlide>3</SwiperSlide>
-                <SwiperSlide>4</SwiperSlide>
-                <SwiperSlide>5</SwiperSlide>
+                <div className='grid grid-cols-1 md:grid-cols-3'>
+                    {
+                        data.map(Sdata => <SwiperSlide><InstructorCard Sdata={Sdata}></InstructorCard></SwiperSlide>)
+                    }
+                </div>
+
             </Swiper>
 
 
-            <div className='grid grid-cols-1 md:grid-cols-3'>
-                <InstructorCard></InstructorCard>
-            </div>
+
         </div>
     );
 };

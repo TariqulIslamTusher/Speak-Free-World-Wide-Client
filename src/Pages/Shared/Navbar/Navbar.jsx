@@ -4,6 +4,7 @@ import { AuthContext } from '../../../Components/AuthProvider/Authprovider';
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Player } from '@lottiefiles/react-lottie-player';
+import { toast } from 'react-toastify';
 
 
 
@@ -12,6 +13,7 @@ const Navbar = () => {
 
     const handleLogOut = () => {
         signOutUser()
+        toast.info("User Logged Out")
     }
 
     return (

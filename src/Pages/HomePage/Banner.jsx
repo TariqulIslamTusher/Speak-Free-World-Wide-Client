@@ -89,7 +89,7 @@ const Banner = () => {
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <div className='absolute -bottom-16 left-0 right-0'>
+            <div className='absolute -bottom-12 left-0 right-0'>
                 <BannerBottom></BannerBottom>
             </div>
         </div>

@@ -1,0 +1,142 @@
+[
+    {
+        "name": "English",
+        "className": "Beginner English Class",
+        "classPhoto": "english_class.jpg",
+        "seatAvailability": 20,
+        "studentAttendees": 15,
+        "instructor": {
+            "name": "John Smith",
+            "photo": "john_smith.jpg",
+            "email": "john.smith@example.com",
+            "ratings": 4.8
+        },
+        "classViewNumber": 100
+    },
+    {
+        "name": "Spanish",
+        "className": "Intermediate Spanish Class",
+        "classPhoto": "spanish_class.jpg",
+        "seatAvailability": 25,
+        "studentAttendees": 18,
+        "instructor": {
+            "name": "Maria Rodriguez",
+            "photo": "maria_rodriguez.jpg",
+            "email": "maria.rodriguez@example.com",
+            "ratings": 4.9
+        },
+        "classViewNumber": 75
+    },
+    {
+        "name": "French",
+        "className": "Advanced French Class",
+        "classPhoto": "french_class.jpg",
+        "seatAvailability": 15,
+        "studentAttendees": 12,
+        "instructor": {
+            "name": "Jean Dupont",
+            "photo": "jean_dupont.jpg",
+            "email": "jean.dupont@example.com",
+            "ratings": 4.7
+        },
+        "classViewNumber": 120
+    },
+    {
+        "name": "German",
+        "className": "Beginner German Class",
+        "classPhoto": "german_class.jpg",
+        "seatAvailability": 10,
+        "studentAttendees": 8,
+        "instructor": {
+            "name": "Hans Müller",
+            "photo": "hans_muller.jpg",
+            "email": "hans.muller@example.com",
+            "ratings": 4.6
+        },
+        "classViewNumber": 90
+    },
+    {
+        "name": "Italian",
+        "className": "Intermediate Italian Class",
+        "classPhoto": "italian_class.jpg",
+        "seatAvailability": 30,
+        "studentAttendees": 25,
+        "instructor": {
+            "name": "Giovanni Rossi",
+            "photo": "giovanni_rossi.jpg",
+            "email": "giovanni.rossi@example.com",
+            "ratings": 4.9
+        },
+        "classViewNumber": 150
+    },
+    {
+        "name": "Mandarin",
+        "className": "Advanced Mandarin Class",
+        "classPhoto": "mandarin_class.jpg",
+        "seatAvailability": 20,
+        "studentAttendees": 18,
+        "instructor": {
+            "name": "Li Wei",
+            "photo": "li_wei.jpg",
+            "email": "li.wei@example.com",
+            "ratings": 4.8
+        },
+        "classViewNumber": 80
+    },
+    {
+        "name": "French",
+        "className": "Advanced French Class",
+        "classPhoto": "french_class.jpg",
+        "seatAvailability": 15,
+        "studentAttendees": 12,
+        "instructor": {
+            "name": "Jean Dupont",
+            "photo": "jean_dupont.jpg",
+            "email": "jean.dupont@example.com",
+            "ratings": 4.7
+        },
+        "classViewNumber": 180
+    },
+    {
+        "name": "German",
+        "className": "Beginner German Class",
+        "classPhoto": "german_class.jpg",
+        "seatAvailability": 10,
+        "studentAttendees": 8,
+        "instructor": {
+            "name": "Hans Müller",
+            "photo": "hans_muller.jpg",
+            "email": "hans.muller@example.com",
+            "ratings": 4.6
+        },
+        "classViewNumber": 120
+    },
+    {
+        "name": "Italian",
+        "className": "Intermediate Italian Class",
+        "classPhoto": "italian_class.jpg",
+        "seatAvailability": 30,
+        "studentAttendees": 25,
+        "instructor": {
+            "name": "Giovanni Rossi",
+            "photo": "giovanni_rossi.jpg",
+            "email": "giovanni.rossi@example.com",
+            "ratings": 4.9
+        },
+        "classViewNumber": 250
+    },
+    {
+        "name": "Mandarin",
+        "className": "Advanced Mandarin Class",
+        "classPhoto": "mandarin_class.jpg",
+        "seatAvailability": 20,
+        "studentAttendees": 18,
+        "instructor": {
+            "name": "Li Wei",
+            "photo": "li_wei.jpg",
+            "email": "li.wei@example.com",
+            "ratings": 4.8
+        },
+        "classViewNumber": 200
+    }
+]

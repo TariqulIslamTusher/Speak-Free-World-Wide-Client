@@ -1,14 +1,13 @@
-import React from 'react';
-import SectionTitle from '../SectionTitle/SectionTitle';
+
 
 const ParaluxExperience = () => {
     return (
         <div className='container mx-auto'>
             <p className='text-white text-center my-10 font-bold w-8/12 mx-auto md:text-3xl'>Train your long term memory with a method that’s faster and better than traditional rote learning.</p>
 
-            <div className='md:flex gap-5'>
+            <div className='md:flex gap-5 group'>
 
-                <div className="card w-full bg-base-100 group hover:shadow-xl">
+                <div className="card w-full bg-base-100 hover:shadow-xl">
                     <figure className="p-10 bg-slate-200">
                         <img src="https://6968579.fs1.hubspotusercontent-na1.net/hubfs/6968579/Imported%20images/60dd4cd5525d358246ddf719_Vector%20(1).svg" className="rounded-xl h-16" />
                     </figure>
@@ -19,7 +18,7 @@ const ParaluxExperience = () => {
                 </div>
                 
 
-                <div className="card w-full bg-base-100 group hover:shadow-xl">
+                <div className="card w-full bg-base-100 hover:shadow-xl">
                     <figure className="p-10 bg-slate-200">
                         <img src="https://6968579.fs1.hubspotusercontent-na1.net/hubfs/6968579/Archive%20-%20Sept%202022/Iconography/Method_TwoTimes.svg" className="rounded-xl h-16" />
                     </figure>
@@ -29,7 +28,7 @@ const ParaluxExperience = () => {
                     </div>
                 </div>
 
-                <div className="card w-full group bg-base-100 hover:shadow-xl">
+                <div className="card w-full bg-base-100 hover:shadow-xl">
                     <figure className="p-10 bg-slate-200">
                         <img src="https://6968579.fs1.hubspotusercontent-na1.net/hubfs/6968579/Archive%20-%20Sept%202022/Iconography/Method_Immerse.svg" className="rounded-xl h-16" />
                     </figure>
@@ -39,7 +38,7 @@ const ParaluxExperience = () => {
                     </div>
                 </div>
 
-                <div className="card w-full bg-base-100 group hover:shadow-xl">
+                <div className="card w-full bg-base-100 hover:shadow-xl">
                     <figure className="p-10 bg-slate-200">
                         <img src="https://6968579.fs1.hubspotusercontent-na1.net/hubfs/6968579/Archive%20-%20Sept%202022/Iconography/Method_Goals.svg" className="rounded-xl h-16" />
                     </figure>

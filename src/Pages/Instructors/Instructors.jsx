@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CommonBanner from '../../Components/CommonBanner/CommonBanner';
 import TableRow from '../../Components/TableRowOFInstructors/TableRow';
+import useAxiosSecure from '../../CustomHook/AxiosHook/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+import Loader from '../../Components/Loader/Loader';
 
 const Instructors = () => {
+    // const [data, setInstructorData] = useState([])
+
+    const [AxiosSecure] = useAxiosSecure()
+
+    const {isLoading, data = [] } = useQuery({
+        queryKey: [],
+        queryFn: async ()=>{
+            const res = await fetch('http://localhost:3000/class')
+            return res.json()
+        }
+    })
+    console.log( data, isLoading)  
+
+    if(isLoading){
+        return <Loader></Loader>
+    }
+
+    // useEffect(()=>{
+    //     AxiosSecure('/class')
+    //     .then(res => console.log(res))
+    // },[])
+
+
+
     return (
         <div>
             <CommonBanner>#Instructors</CommonBanner>
@@ -19,9 +46,11 @@ const Instructors = () => {
                             <th></th>
                         </tr>
                     </thead>
-                    {/* Table body */}
+                 
                     <tbody>
-                       <TableRow></TableRow>                       
+                        {
+                            data.map((Sdata,index) => <TableRow key={index} Sdata={Sdata} index={index}></TableRow>)
+                        }            
                     </tbody>
                     
                 </table>

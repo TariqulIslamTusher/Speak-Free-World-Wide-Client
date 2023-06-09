@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { FaExpandArrowsAlt, FaGoogle } from "react-icons/fa";
+import { FaExpandArrowsAlt, FaEye, FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../Components/AuthProvider/Authprovider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { saveUserToDB } from '../../api/AuthJS/auth';
 
 
 const Login = () => {
-
+    const [hide, setHide] = useState(true)
     const { LoginWithEmail, setUser, loader, setLoader, handleGoogle } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
@@ -43,6 +44,7 @@ const Login = () => {
         handleGoogle()
             .then((res) => {
                 const loggedUser = res.user
+                saveUserToDB(loggedUser)
                 setUser(loggedUser);
                 navigate(location?.state?.pathname || '/', { replace: true })
             })
@@ -87,9 +89,13 @@ const Login = () => {
                             <label className="block text-gray-700 font-bold mb-2" htmlFor="password">
                                 Password
                             </label>
-                            <input className='border border-slate-500 w-full px-3 py-2 rounded-md' type="password" placeholder="Password" {...register("Password", { required: true, minLength: 6 })} />
-                            {errors.Password?.type === 'minLength' && <p className='text-red-500'>Password must be minimun 6 in length</p>}
-                            {errors.Password?.type === 'required' && <p className='text-red-500'>Password is required.</p>}
+                            <div className='relative'>
+                                <input className='border border-slate-500 w-full px-3 py-2 rounded-md ' type={hide ? 'password' : 'text'} placeholder="Password" {...register("Password", { required: true, minLength: 6 })} />
+                                <FaEye onClick={() => setHide(!hide)} className='absolute right-5 top-1/3 '></FaEye>
+
+                                {errors.Password?.type === 'minLength' && <p className='text-red-500'>Password must be minimun 6 in length</p>}
+                                {errors.Password?.type === 'required' && <p className='text-red-500'>Password is required.</p>}
+                            </div>
                         </div>
                         <div className='text-center'>
                             {loader ? <div className='Cbutton mx-auto w-8/12 '><FaExpandArrowsAlt className='animate-spin'></FaExpandArrowsAlt></div> : <input className='Cbutton mx-auto w-8/12 ' type="submit" value='Log in' />}

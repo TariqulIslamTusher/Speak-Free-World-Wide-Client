@@ -6,6 +6,7 @@ import { AuthContext } from '../../Components/AuthProvider/Authprovider';
 import { useForm } from 'react-hook-form';
 import { FaExpandArrowsAlt, FaGoogle } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
+import { saveUserToDB } from '../../api/AuthJS/auth';
 
 
 
@@ -33,7 +34,11 @@ const Register = () => {
         createAcctWithEmail(email, password)
             .then(res => {
                 const loggedUser = res.user;
-                console.log(loggedUser);
+                // use the function to save the user in the Database
+
+                saveUserToDB(loggedUser)
+
+
                 
                 // calling the photo and url updating function
                 updatePhotoAndUrl(loggedUser)
@@ -48,6 +53,8 @@ const Register = () => {
                 signOutUser()
                 LoginWithEmail(email, password)
                     .then(res => {
+                        console.log(res)
+                        toast.success('Registration Success')
                         navigate(location?.state?.pathname || '/', { replace: true })
                     }).catch(err => {
                         console.log(err);
@@ -73,6 +80,7 @@ const Register = () => {
         handleGoogle()
             .then((res) => {
                 const loggedUser = res.user
+                saveUserToDB(loggedUser)
                 setUser(loggedUser);
                 navigate(location?.state?.pathname || '/', { replace: true })
             })
