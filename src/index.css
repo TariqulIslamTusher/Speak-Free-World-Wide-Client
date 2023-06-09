@@ -3,10 +3,13 @@
 @tailwind utilities;
 
 .active{
-    @apply text-yellow-500 border-b-2
+    @apply text-yellow-700 md:text-yellow-400 border-b-2 font-bold border-white
+}
+.DSactive{
+    @apply text-blue-900  font-bold border-b-2 border-cyan-800
 }
 .pending{
-    @apply text-green-400
+    @apply text-red-500
 }
 
 .custom-text{

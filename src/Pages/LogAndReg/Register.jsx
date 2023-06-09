@@ -35,25 +35,22 @@ const Register = () => {
             .then(res => {
                 const loggedUser = res.user;
                 // use the function to save the user in the Database
-
-                saveUserToDB(loggedUser)
-
-
-                
                 // calling the photo and url updating function
+                console.log(loggedUser)
                 updatePhotoAndUrl(loggedUser)
                     .then(() => {
 
                     })
                     .catch((error) => {
-                        console.log(error);
+                        console.log('error to upload photoAndUrl');
                     });
 
                 setUser(loggedUser);
                 signOutUser()
                 LoginWithEmail(email, password)
                     .then(res => {
-                        console.log(res)
+                        console.log(res.user)
+                        saveUserToDB(res.user)
                         toast.success('Registration Success')
                         navigate(location?.state?.pathname || '/', { replace: true })
                     }).catch(err => {
@@ -79,14 +76,13 @@ const Register = () => {
     const googleLogin = () => {
         handleGoogle()
             .then((res) => {
+                navigate(location?.state?.pathname || '/', { replace: true })
                 const loggedUser = res.user
                 saveUserToDB(loggedUser)
-                setUser(loggedUser);
-                navigate(location?.state?.pathname || '/', { replace: true })
             })
             .catch(err => {
-                toast.error(err.message)
                 console.log(err);
+                toast.error(err.message)
             })
     }
 

@@ -10,6 +10,7 @@ import { saveUserToDB } from '../../api/AuthJS/auth';
 
 
 const Login = () => {
+
     const [hide, setHide] = useState(true)
     const { LoginWithEmail, setUser, loader, setLoader, handleGoogle } = useContext(AuthContext)
     const location = useLocation()
@@ -25,8 +26,8 @@ const Login = () => {
         //Login with email function by context api
         LoginWithEmail(email, password)
             .then(res => {
+                setUser(res.user)
                 toast.success('Login Success')
-                const emailUser = res.user
                 navigate(location.state?.pathname || '/', { replace: true })
             })
             .catch(err => {
@@ -44,12 +45,13 @@ const Login = () => {
         handleGoogle()
             .then((res) => {
                 const loggedUser = res.user
+                navigate(location?.state?.pathname || '/', { replace: true })
                 saveUserToDB(loggedUser)
                 setUser(loggedUser);
-                navigate(location?.state?.pathname || '/', { replace: true })
             })
             .catch(err => {
-
+                console.log(err);
+                toast.error(err.message)
             })
     }
 

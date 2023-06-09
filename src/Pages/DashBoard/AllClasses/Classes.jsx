@@ -15,10 +15,21 @@ const Classes = () => {
             return res.data
         }
     })
+    console.log(data, isLoading)  
 
     if(isLoading){
         return <Loader></Loader>
     }
+
+    // useEffect(()=>{
+    //     AxiosSecure.get('/class')
+    //     .then(res => {
+    //         console.log(res.data)
+    //         setClassData(res.data)
+    //     })
+    //     .catch(err => console.log(err))
+    // },[])
+
 
     return (
         <div>

@@ -13,20 +13,15 @@ const Instructors = () => {
     const {isLoading, data = [] } = useQuery({
         queryKey: [],
         queryFn: async ()=>{
-            const res = await fetch('http://localhost:3000/class')
-            return res.json()
+            const res = await AxiosSecure('/class')
+            return res.data
         }
     })
-    console.log( data, isLoading)  
 
     if(isLoading){
         return <Loader></Loader>
     }
 
-    // useEffect(()=>{
-    //     AxiosSecure('/class')
-    //     .then(res => console.log(res))
-    // },[])
 
 
 

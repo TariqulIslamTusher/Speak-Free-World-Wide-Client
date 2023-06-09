@@ -1,16 +1,24 @@
 // save a user to database 
-
-import useAxiosSecure from "../../CustomHook/AxiosHook/useAxiosSecure"
-
-
 export const saveUserToDB = user => {
-    const [AxiosSecure] =useAxiosSecure()
+    console.log(user);
     const currUser = {
-        email: user.email
+        userPhoto: user.photoURL,
+        userName: user.displayName,
+        userEmail: user.email,
+        role: 'user',
+
     }
-    AxiosSecure.put(`/users/${user.email}`)
-        .then(res => console.log(res))
-        .catch(err => {
-            console.log(err)
+
+
+    fetch(`http://localhost:3000/users/${user.email}`, {
+        method: 'PUT',
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(currUser)
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
         })
 }

@@ -32,7 +32,7 @@ const Navbar = () => {
 
                     <div>
                         <h2 className='text-lg sm:text-xl md:text-3xl font-bold font-mono text-white'>Speak <span className='text-yellow-500'>Free</span></h2>
-                        <h2 className='text-lg font-bold text-red-700'>World Wide </h2>
+                        <h2 className='text-lg font-bold text-red-400 '>World Wide </h2>
                     </div>
                 </div>
 
@@ -76,10 +76,10 @@ const Navbar = () => {
                     <div className="dropdown dropdown-end sm:ml-5">
 
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-12 rounded-full" data-tooltip-id="my-tooltip"
+                            <div className="w-12 md:w-16 rounded-full" data-tooltip-id="my-tooltip"
                                 data-tooltip-content={user ? user?.displayName : 'Add User'}>
                                 {/* tooltips with id */}
-                                <Tooltip className='z-30' id="my-tooltip" ></Tooltip>
+                                <Tooltip className='z-30 hidden md:block' id="my-tooltip" ></Tooltip>
 
                                 <img src={user ? user?.photoURL : 'https://cdn-icons-png.flaticon.com/512/16/16363.png?w=740&t=st=1684413586~exp=1684414186~hmac=099d827d099e8fcd0fd10f202d63209149e7afa823db4512bc04a76d8b9e8761'} alt="" />
                             </div>
@@ -88,7 +88,7 @@ const Navbar = () => {
 
                         {/* Section for the mobile device */}
 
-                        <ul tabIndex={0} className="menu lg:hidden dropdown-content divide-y mt-3 px-6 py-2 shadow bg-base-100 rounded-box w-72 md:w-72 text-lg">
+                        <ul tabIndex={0} className="menu lg:hidden dropdown-content divide-y mt-5 px-6 py-3 shadow bg-slate-300 z-50 rounded-box w-72 md:w-72 text-lg">
 
                             <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'><h2 className='text-xl font-semibold'>{user?.displayName}</h2></li>
 
@@ -114,9 +114,9 @@ const Navbar = () => {
                             }
 
 
-                            <li className='pb-2 transition-all duration-200'>
-                                {user ? <button className='Cbutton' onClick={handleLogOut}>LogOut</button> : <Link to='/login'><button className='Cbutton'>Login</button></Link>}
-                            </li>
+
+                            {user ? <button className='Cbutton' onClick={handleLogOut}>LogOut</button> : <Link to='/login'><button className='Cbutton'>Login</button></Link>}
+
                         </ul>
                     </div>
                 </div>

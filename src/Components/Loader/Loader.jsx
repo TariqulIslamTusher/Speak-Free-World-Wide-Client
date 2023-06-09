@@ -1,15 +1,29 @@
 import React from 'react';
 import "./Loader.css";
+import { Bars } from 'react-loader-spinner';
+import { PacmanLoader } from 'react-spinners';
 
 
 const Loader = () => {
     return (
-        <div>
-            
-            <div className="spinner">
-                <div className="cube1"></div>
-                <div className="cube2"></div>
-            </div>
+        <div className='spinner'>
+            {/* <PacmanLoader
+                color="rgba(30, 20, 50, 1)"
+                loading
+                size={10}
+                speedMultiplier={1}
+            /> */}
+
+
+            <Bars
+                height="140"
+                width="700"
+                color="#1e203e"
+                ariaLabel="bars-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+            />
         </div>
     );
 };

@@ -4,7 +4,7 @@ import Rating from 'react-rating';
 
 const BannerBottom = () => {
     return (
-        <div className='container mx-auto px-16 bg-slate-300 border-0 border-b-8 border-yellow-600 rounded-3xl shadow-4xl flex justify-center divide-x-2 text-center'>
+        <div className='container flex flex-col md:flex-row mx-auto px-16 bg-slate-300 border-0 border-b-8 border-yellow-600 rounded-3xl shadow-4xl justify-center divide-y-4 md:divide-y-0 md:divide-x-2 text-center'>
             <div className='flex flex-col justify-between w-full mx-auto p-3'>
                 <h2>23</h2>
                 <p>Language</p>

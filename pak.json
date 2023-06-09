@@ -1,142 +1,168 @@
 [
     {
-        "name": "English",
-        "className": "Beginner English Class",
-        "classPhoto": "english_class.jpg",
-        "seatAvailability": 20,
-        "studentAttendees": 15,
-        "instructor": {
-            "name": "John Smith",
-            "photo": "john_smith.jpg",
-            "email": "john.smith@example.com",
-            "ratings": 4.8
-        },
-        "classViewNumber": 100
+      "className": "Spanish",
+      "classImage": "spanish101.jpg",
+      "instructorName": "John Smith",
+      "instructorImage": "johnsmith.jpg",
+      "availableSeat": 20,
+      "price": 99.99,
+      "instructorEmail": "john.smith@example.com",
+      "classStatus": "Active",
+      "classView": 500,
+      "attendedStudent": 150,
+      "booked": false,
+      "classRatings": 4.5,
+      "feedBack": "Great class! I learned a lot. The instructor was very knowledgeable."
     },
     {
-        "name": "Spanish",
-        "className": "Intermediate Spanish Class",
-        "classPhoto": "spanish_class.jpg",
-        "seatAvailability": 25,
-        "studentAttendees": 18,
-        "instructor": {
-            "name": "Maria Rodriguez",
-            "photo": "maria_rodriguez.jpg",
-            "email": "maria.rodriguez@example.com",
-            "ratings": 4.9
-        },
-        "classViewNumber": 75
+      "className": "French",
+      "classImage": "french201.jpg",
+      "instructorName": "Emily Johnson",
+      "instructorImage": "emilyjohnson.jpg",
+      "availableSeat": 15,
+      "price": 149.99,
+      "instructorEmail": "emily.johnson@example.com",
+      "classStatus": "Active",
+      "classView": 400,
+      "attendedStudent": 100,
+      "booked": false,
+      "classRatings": 4.2,
+      "feedBack": "The class was challenging but rewarding. The instructor provided excellent explanations."
     },
     {
-        "name": "French",
-        "className": "Advanced French Class",
-        "classPhoto": "french_class.jpg",
-        "seatAvailability": 15,
-        "studentAttendees": 12,
-        "instructor": {
-            "name": "Jean Dupont",
-            "photo": "jean_dupont.jpg",
-            "email": "jean.dupont@example.com",
-            "ratings": 4.7
-        },
-        "classViewNumber": 120
+      "className": "German",
+      "classImage": "german101.jpg",
+      "instructorName": "Michael Davis",
+      "instructorImage": "michaeldavis.jpg",
+      "availableSeat": 30,
+      "price": 79.99,
+      "instructorEmail": "michael.davis@example.com",
+      "classStatus": "Active",
+      "classView": 350,
+      "attendedStudent": 120,
+      "booked": false,
+      "classRatings": 3.8,
+      "feedBack": "The class content was interesting, but the instructor's delivery could be improved."
     },
     {
-        "name": "German",
-        "className": "Beginner German Class",
-        "classPhoto": "german_class.jpg",
-        "seatAvailability": 10,
-        "studentAttendees": 8,
-        "instructor": {
-            "name": "Hans Müller",
-            "photo": "hans_muller.jpg",
-            "email": "hans.muller@example.com",
-            "ratings": 4.6
-        },
-        "classViewNumber": 90
+      "className": "Italian",
+      "classImage": "italian202.jpg",
+      "instructorName": "Sarah Thompson",
+      "instructorImage": "sarahthompson.jpg",
+      "availableSeat": 25,
+      "price": 129.99,
+      "instructorEmail": "sarah.thompson@example.com",
+      "classStatus": "Active",
+      "classView": 300,
+      "attendedStudent": 80,
+      "booked": false,
+      "classRatings": 4.7,
+      "feedBack": "The instructor made complex topics easy to understand. Highly recommended!"
     },
     {
-        "name": "Italian",
-        "className": "Intermediate Italian Class",
-        "classPhoto": "italian_class.jpg",
-        "seatAvailability": 30,
-        "studentAttendees": 25,
-        "instructor": {
-            "name": "Giovanni Rossi",
-            "photo": "giovanni_rossi.jpg",
-            "email": "giovanni.rossi@example.com",
-            "ratings": 4.9
-        },
-        "classViewNumber": 150
+      "className": "Mandarin",
+      "classImage": "mandarin101.jpg",
+      "instructorName": "David Wilson",
+      "instructorImage": "davidwilson.jpg",
+      "availableSeat": 10,
+      "price": 199.99,
+      "instructorEmail": "david.wilson@example.com",
+      "classStatus": "Active",
+      "classView": 450,
+      "attendedStudent": 200,
+      "booked": false,
+      "classRatings": 4.9,
+      "feedBack": "The class was well-structured, and the instructor provided practical examples."
     },
     {
-        "name": "Mandarin",
-        "className": "Advanced Mandarin Class",
-        "classPhoto": "mandarin_class.jpg",
-        "seatAvailability": 20,
-        "studentAttendees": 18,
-        "instructor": {
-            "name": "Li Wei",
-            "photo": "li_wei.jpg",
-            "email": "li.wei@example.com",
-            "ratings": 4.8
-        },
-        "classViewNumber": 80
+      "className": "Japanese",
+      "classImage": "japanese101.jpg",
+      "instructorName": "Jessica Lee",
+      "instructorImage": "jessicalee.jpg",
+      "availableSeat": 20,
+      "price": 99.99,
+      "instructorEmail": "jessica.lee@example.com",
+      "classStatus": "Active",
+      "classView": 500,
+      "attendedStudent": 150,
+      "booked": false,
+      "classRatings": 4.5,
+      "feedBack": "Great class! I learned a lot. The instructor was very knowledgeable."
     },
     {
-        "name": "French",
-        "className": "Advanced French Class",
-        "classPhoto": "french_class.jpg",
-        "seatAvailability": 15,
-        "studentAttendees": 12,
-        "instructor": {
-            "name": "Jean Dupont",
-            "photo": "jean_dupont.jpg",
-            "email": "jean.dupont@example.com",
-            "ratings": 4.7
-        },
-        "classViewNumber": 180
+      "className": "Russian",
+      "classImage": "russian201.jpg",
+      "instructorName": "Alex Petrov",
+      "instructorImage": "alexpetrov.jpg",
+      "availableSeat": 15,
+      "price": 149.99,
+      "instructorEmail": "alex.petrov@example.com",
+      "classStatus": "Active",
+      "classView": 400,
+      "attendedStudent": 100,
+      "booked": false,
+      "classRatings": 4.2,
+      "feedBack": "The class was challenging but rewarding. The instructor provided excellent explanations."
     },
     {
-        "name": "German",
-        "className": "Beginner German Class",
-        "classPhoto": "german_class.jpg",
-        "seatAvailability": 10,
-        "studentAttendees": 8,
-        "instructor": {
-            "name": "Hans Müller",
-            "photo": "hans_muller.jpg",
-            "email": "hans.muller@example.com",
-            "ratings": 4.6
-        },
-        "classViewNumber": 120
+      "className": "Portuguese",
+      "classImage": "portuguese101.jpg",
+      "instructorName": "Ana Silva",
+      "instructorImage": "anasilva.jpg",
+      "availableSeat": 30,
+      "price": 79.99,
+      "instructorEmail": "ana.silva@example.com",
+      "classStatus": "Active",
+      "classView": 350,
+      "attendedStudent": 120,
+      "booked": false,
+      "classRatings": 3.8,
+      "feedBack": "The class content was interesting, but the instructor's delivery could be improved."
     },
     {
-        "name": "Italian",
-        "className": "Intermediate Italian Class",
-        "classPhoto": "italian_class.jpg",
-        "seatAvailability": 30,
-        "studentAttendees": 25,
-        "instructor": {
-            "name": "Giovanni Rossi",
-            "photo": "giovanni_rossi.jpg",
-            "email": "giovanni.rossi@example.com",
-            "ratings": 4.9
-        },
-        "classViewNumber": 250
+      "className": "Arabic",
+      "classImage": "arabic202.jpg",
+      "instructorName": "Mohammed Khalid",
+      "instructorImage": "mohammedkhalid.jpg",
+      "availableSeat": 25,
+      "price": 129.99,
+      "instructorEmail": "mohammed.khalid@example.com",
+      "classStatus": "Active",
+      "classView": 300,
+      "attendedStudent": 80,
+      "booked": false,
+      "classRatings": 4.7,
+      "feedBack": "The instructor made complex topics easy to understand. Highly recommended!"
     },
     {
-        "name": "Mandarin",
-        "className": "Advanced Mandarin Class",
-        "classPhoto": "mandarin_class.jpg",
-        "seatAvailability": 20,
-        "studentAttendees": 18,
-        "instructor": {
-            "name": "Li Wei",
-            "photo": "li_wei.jpg",
-            "email": "li.wei@example.com",
-            "ratings": 4.8
-        },
-        "classViewNumber": 200
+      "className": "Korean",
+      "classImage": "korean101.jpg",
+      "instructorName": "Kim Min-ji",
+      "instructorImage": "kimminji.jpg",
+      "availableSeat": 10,
+      "price": 199.99,
+      "instructorEmail": "kim.minji@example.com",
+      "classStatus": "Active",
+      "classView": 450,
+      "attendedStudent": 200,
+      "booked": false,
+      "classRatings": 4.9,
+      "feedBack": "The class was well-structured, and the instructor provided practical examples."
+    },
+    {
+      "className": "Hindi",
+      "classImage": "hindi101.jpg",
+      "instructorName": "Raj Patel",
+      "instructorImage": "rajpatel.jpg",
+      "availableSeat": 20,
+      "price": 99.99,
+      "instructorEmail": "raj.patel@example.com",
+      "classStatus": "Active",
+      "classView": 500,
+      "attendedStudent": 150,
+      "booked": false,
+      "classRatings": 4.5,
+      "feedBack": "Great class! I learned a lot. The instructor was very knowledgeable."
     }
-]
+  ]
+  

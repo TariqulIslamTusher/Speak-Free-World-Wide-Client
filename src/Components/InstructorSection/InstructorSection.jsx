@@ -15,56 +15,97 @@ import Loader from '../Loader/Loader';
 
 const InstructorSection = () => {
 
+
+
     const [AxiosSecure] = useAxiosSecure()
 
     const { isLoading, data = [] } = useQuery({
         queryKey: [],
         queryFn: async () => {
-            const res = await fetch('http://localhost:3000/class')
-            return res.json()
+            const res = await AxiosSecure('/instructor')
+            return res.data
         }
     })
-    console.log(data, isLoading)
+    // console.log(data.slice(0,6), isLoading)
 
     if (isLoading) {
         return <Loader></Loader>
     }
 
     return (
-        <div>
-            <SectionTitle heading='Our Top Instructores' subHeading='Familiar basis on student attendence'></SectionTitle>
+        <>
+            <div className='md:hidden'>
+                <SectionTitle heading='Our Top Instructores' subHeading='Familiar basis on student attendence'></SectionTitle>
 
-            <Swiper
-                autoplay={{
-                    delay: 1500,
-                    disableOnInteraction: false,
-                }}
-                effect={"coverflow"}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={3}
-                coverflowEffect={{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                }}
-                pagination={true}
-                modules={[EffectCoverflow, Pagination]}
-                className="mySwiper"
-            >
-                <div className='grid grid-cols-1 md:grid-cols-3'>
-                    {
-                        data.map(Sdata => <SwiperSlide><InstructorCard Sdata={Sdata}></InstructorCard></SwiperSlide>)
-                    }
-                </div>
+                <Swiper
+                    autoplay={{
+                        delay: 1000,
+                        disableOnInteraction: false,
+                    }}
+                    effect={"coverflow"}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={'auto'}
 
-            </Swiper>
+                    coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true,
+                    }}
+                    pagination={true}
+                    modules={[EffectCoverflow, Pagination, Autoplay]}
+                    className="mySwiper"
+                >
+                    <div className='grid grid-cols-1'>
+                        {
+                            data?.slice(0,6).map(Sdata => <SwiperSlide><InstructorCard key={Sdata._id} Sdata={Sdata}></InstructorCard></SwiperSlide>)
+                        }
+                    </div>
+
+                </Swiper>
 
 
 
-        </div>
+            </div>
+
+            <div className='hidden md:block'>
+                <SectionTitle heading='Our Top Instructores' subHeading='Familiar basis on student attendence'></SectionTitle>
+
+                <Swiper
+                    autoplay={{
+                        delay: 1000,
+                        disableOnInteraction: false,
+                    }}
+                    effect={"coverflow"}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={3}
+
+                    coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true,
+                    }}
+                    pagination={true}
+                    modules={[EffectCoverflow, Pagination, Autoplay]}
+                    className="mySwiper"
+                >
+                    <div className='grid grid-cols-1'>
+                        {
+                            data?.slice(0,6).map(Sdata => <SwiperSlide><InstructorCard key={Sdata._id} Sdata={Sdata}></InstructorCard></SwiperSlide>)
+                        }
+                    </div>
+
+                </Swiper>
+
+
+
+            </div>
+        </>
     );
 };
 
