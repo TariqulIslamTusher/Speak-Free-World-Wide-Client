@@ -162,7 +162,10 @@ const Register = () => {
 
                         <div className='text-center '>
                             {
-                                loader ? <div className='Cbutton mx-auto w-5/12 '><FaExpandArrowsAlt className='animate-spin'></FaExpandArrowsAlt></div> : <input className='Cbutton mx-auto w-8/12 ' type="submit" value='Register' />
+                                loader ? <div className='Cbutton mx-auto w-5/12 '><FaExpandArrowsAlt className='animate-spin'></FaExpandArrowsAlt></div> 
+                                : 
+                                
+                                <input className='Cbutton mx-auto w-8/12 ' type="submit" value='Register' />
                             }
 
                         </div>

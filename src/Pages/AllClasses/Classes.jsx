@@ -8,15 +8,15 @@ import { useQuery } from '@tanstack/react-query';
 const Classes = () => {
     const [AxiosSecure] = useAxiosSecure()
 
-    const {isLoading, data = [] } = useQuery({
+    const { isLoading, data = [] } = useQuery({
         queryKey: [],
-        queryFn: async ()=>{
-            const res = await AxiosSecure('/class')
+        queryFn: async () => {
+            const res = await AxiosSecure('/class?classStatus=aproved')
             return res.data
         }
     })
 
-    if(isLoading){
+    if (isLoading) {
         return <Loader></Loader>
     }
 
@@ -24,9 +24,9 @@ const Classes = () => {
         <div>
             <CommonBanner>All Our Classes</CommonBanner>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 container mx-auto'>
-               {
-                data.map(Sdata =>  <ClassCard Sdata={Sdata}></ClassCard>)
-               }
+                {
+                    data.map(Sdata => <ClassCard Sdata={Sdata}></ClassCard>)
+                }
             </div>
         </div>
     );

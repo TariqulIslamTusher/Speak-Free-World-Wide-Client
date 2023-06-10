@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ClassCard = ({Sdata}) => {
+const PendingClass = ({Sdata, refetch}) => {
 
   if(!Sdata){
     return <div className='min-h-screen text-5xl text-black'>Loading......</div>
@@ -14,12 +14,14 @@ const ClassCard = ({Sdata}) => {
       <div className="card-body">
         <h2 className="card-title">{className}</h2>
         <p>{classStatus}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+        <div className="flex flex-col md:flex-row w-full justify-end gap-3">
+          <button className="btn btn-sm  btn-outline btn-success">Approve</button>
+          <button className="btn btn-sm  btn-outline btn-error">Deny</button>
+          <button className="btn btn-sm btn-outline btn-ghost">Feedback</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default ClassCard;
+export default PendingClass;

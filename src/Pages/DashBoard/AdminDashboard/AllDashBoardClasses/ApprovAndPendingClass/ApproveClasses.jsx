@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ClassCard = ({Sdata}) => {
+const ApproveClasses = ({Sdata, refetch}) => {
 
   if(!Sdata){
     return <div className='min-h-screen text-5xl text-black'>Loading......</div>
   }
 
-  const {className,classPhoto, _id, classStatus} =Sdata
+  const {className,classPhoto, _id, classStatus, classRatings} =Sdata
 
   return (
     <div className="card card-compact w-full bg-base-100 shadow-xl">
@@ -15,11 +15,11 @@ const ClassCard = ({Sdata}) => {
         <h2 className="card-title">{className}</h2>
         <p>{classStatus}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary">{classRatings}</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default ClassCard;
+export default ApproveClasses;

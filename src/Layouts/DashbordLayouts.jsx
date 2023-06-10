@@ -6,6 +6,7 @@ import { FaBars } from 'react-icons/fa';
 import useAxiosSecure from '../CustomHook/AxiosHook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../Components/Loader/Loader';
+import { toast } from 'react-toastify';
 
 
 const DashBoardLayouts = () => {
@@ -32,7 +33,7 @@ const DashBoardLayouts = () => {
     if(!user){
         return <Loader></Loader>
     }
-    console.log(data, isLoading);
+    // console.log(data, isLoading);
 
     if (isLoading || data.length <= 0) {
         return <Loader></Loader>
@@ -92,7 +93,7 @@ const DashBoardLayouts = () => {
 
 
                         <NavLink className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/approveClass'>
+                            isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/dashboardClasses'>
                             <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>All Classes</li>
                         </NavLink>
 
@@ -163,12 +164,12 @@ const DashBoardLayouts = () => {
 
 
                         <NavLink className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/mySelectedClass'>
+                            isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/myClasses'>
                             <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>My Classes</li>
                         </NavLink>
 
                         <NavLink className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/myEnrolledClass'>
+                            isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/addNewClass'>
                             <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>Add New Class</li>
                         </NavLink>
 

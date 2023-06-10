@@ -23,7 +23,7 @@ const Instructors = () => {
     }
 
 
-
+    // console.log(data);
 
     return (
         <div>

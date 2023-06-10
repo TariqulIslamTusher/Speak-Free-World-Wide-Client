@@ -11,9 +11,12 @@ import Classes from "./Pages/AllClasses/Classes";
 import DashBoardLayouts from "./Layouts/DashbordLayouts";
 import MySelectedClass from "./Pages/DashBoard/UserDashboardPages/mySelectedClass";
 import MyEnrolledClass from "./Pages/DashBoard/UserDashboardPages/myEnrolledClass";
-import ApproveClasses from "./Pages/DashBoard/AdminDashboard/ApproveClasses";
+import ApproveClasses from "./Pages/DashBoard/AdminDashboard/AllDashBoardClasses/ApprovAndPendingClass/ApproveClasses";
 import ManageUser from "./Pages/DashBoard/AdminDashboard/ManageUser";
 import DashBoardHome from "./Pages/DashBoard/DashBoardHome";
+import DashBoardCardClass from "./Pages/DashBoard/AdminDashboard/AllDashBoardClasses/DashBoardCardClass";
+import MyClasses from "./Pages/DashBoard/InstructorsDashboard/MyClasses";
+import AddNewClass from "./Pages/DashBoard/InstructorsDashboard/AddNewClass";
 
 
 export const router = createBrowserRouter([
@@ -68,6 +71,18 @@ export const router = createBrowserRouter([
                 path: '/dashboard/manageClass',
                 element: <ManageUser></ManageUser>
             },
+            {
+                path: '/dashboard/dashboardClasses',
+                element: <DashBoardCardClass></DashBoardCardClass>
+            },
+            {
+                path: '/dashboard/addNewClass',
+                element: <AddNewClass></AddNewClass>
+            },
+            {
+                path: '/dashboard/myClasses',
+                element: <MyClasses></MyClasses>
+            }
         ]
     }
 ])
