@@ -11,7 +11,7 @@ const Classes = () => {
     const { isLoading, data = [] } = useQuery({
         queryKey: [],
         queryFn: async () => {
-            const res = await AxiosSecure('/class?classStatus=aproved')
+            const res = await AxiosSecure('/class?classStatus=approved')
             return res.data
         }
     })
@@ -25,7 +25,7 @@ const Classes = () => {
             <CommonBanner>All Our Classes</CommonBanner>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 container mx-auto'>
                 {
-                    data.map(Sdata => <ClassCard Sdata={Sdata}></ClassCard>)
+                    data?.map(Sdata => <ClassCard Sdata={Sdata}></ClassCard>)
                 }
             </div>
         </div>

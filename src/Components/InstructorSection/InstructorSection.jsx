@@ -22,7 +22,7 @@ const InstructorSection = () => {
     const { isLoading, data = [] } = useQuery({
         queryKey: [],
         queryFn: async () => {
-            const res = await AxiosSecure('/instructor')
+            const res = await AxiosSecure('/class?classStatus=approved&&sort=attendedStudent')
             return res.data
         }
     })

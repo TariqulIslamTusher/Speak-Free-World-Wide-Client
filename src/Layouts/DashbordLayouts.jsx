@@ -86,20 +86,22 @@ const DashBoardLayouts = () => {
                             <h2 className='border-0 rounded-2xl text-center border-b-4 border-cyan-800 pb-2 transition-all duration-200 text-2xl font-semibold'>{user?.displayName}</h2>
                         </div>
 
+                        
+
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/'>
-                            <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>Home Page</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-black  px-5 py-2 rounded-xl border-cyan-800 text-xl font-bold transition-all duration-200'>Home Page</li>
                         </NavLink>
 
 
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/dashboardClasses'>
-                            <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>All Classes</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-emerald-900 px-5 py-2 rounded-xl border-cyan-800 text-lg transition-all duration-200'>All Classes</li>
                         </NavLink>
 
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/manageClass'>
-                            <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>Manage User</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-emerald-900 px-5 py-2 rounded-xl border-cyan-800 text-lg transition-all duration-200'>Manage User</li>
                         </NavLink>
 
                         <button className='Cbutton mt-auto' onClick={handleLogOut}>LogOut</button>
@@ -150,27 +152,29 @@ const DashBoardLayouts = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-6 w-64 h-full bg-yellow-200 text-xl font-semibold">
                         {/* Sidebar content here */}
-                        <div className='bg-white shadow-xl rounded-3xl mb-6'>
+                        <div className='bg-white shadow-xl rounded-xl mb-6'>
                             <div className='w-32 mx-auto my-3'>
                                 <img className='rounded-full mx-auto' src={user?.photoURL} alt="" />
                             </div>
                             <h2 className='border-0 rounded-xl text-center border-b-4 border-cyan-800 pb-2 transition-all duration-200 text-2xl font-semibold'>{user?.displayName}</h2>
                         </div>
 
+                        
+
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/'>
-                            <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>Home Page</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-black  px-5 py-2 rounded-xl border-cyan-800 text-xl font-bold transition-all duration-200'>Home Page</li>
                         </NavLink>
 
 
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/myClasses'>
-                            <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>My Classes</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-emerald-900 px-5 py-2 rounded-xl border-cyan-800 text-lg transition-all duration-200'>My Classes</li>
                         </NavLink>
 
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/addNewClass'>
-                            <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>Add New Class</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-emerald-900 px-5 py-2 rounded-xl border-cyan-800 text-lg transition-all duration-200'>Add New Class</li>
                         </NavLink>
 
                        
@@ -223,27 +227,29 @@ const DashBoardLayouts = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-6 w-64 h-full bg-yellow-200 text-xl font-semibold">
                         {/* Sidebar content here */}
-                        <div className='bg-white shadow-xl rounded-3xl mb-6'>
+                        <div className='bg-white shadow-xl rounded-xl mb-6'>
                             <div className='w-32 mx-auto my-3'>
                                 <img className='rounded-full mx-auto' src={user?.photoURL} alt="" />
                             </div>
                             <h2 className='border-0 rounded-xl text-center border-b-4 border-cyan-800 pb-2 transition-all duration-200 text-2xl font-semibold'>{user?.displayName}</h2>
                         </div>
 
+                        
+
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/'>
-                            <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>Home Page</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-black  px-5 py-2 rounded-xl border-cyan-800 text-xl font-bold transition-all duration-200'>Home Page</li>
                         </NavLink>
 
 
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/mySelectedClass'>
-                            <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>My Selected Class</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-emerald-900 px-5 py-2 rounded-xl border-cyan-800 text-lg transition-all duration-200'>My Selected Class</li>
                         </NavLink>
 
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/myEnrolledClass'>
-                            <li className='hover:border-b-2 border-cyan-800 pb-2 transition-all duration-200'>My Enrolled Class</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-emerald-900 px-5 py-2 rounded-xl border-cyan-800 text-lg transition-all duration-200'>My Enrolled Class</li>
                         </NavLink>
 
                         <button className='Cbutton mt-auto' onClick={handleLogOut}>LogOut</button>

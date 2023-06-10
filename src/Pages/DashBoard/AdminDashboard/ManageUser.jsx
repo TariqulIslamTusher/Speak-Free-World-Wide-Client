@@ -22,7 +22,7 @@ const ManageUser = () => {
    }
 
 
-
+//    console.log(data);
 
    return (
        <div>

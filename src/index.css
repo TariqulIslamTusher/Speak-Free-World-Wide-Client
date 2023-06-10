@@ -6,7 +6,7 @@
     @apply text-yellow-700 md:text-yellow-400 border-b-2 font-bold border-white
 }
 .DSactive{
-    @apply text-blue-900  font-bold border-b-2 border-cyan-800
+    @apply text-black bg-yellow-300 rounded-xl shadow-xl  font-bold border-b-2 border-cyan-800
 }
 .pending{
     @apply text-red-500

@@ -1,15 +1,16 @@
 import React from 'react';
+import Loader from '../../../../../Components/Loader/Loader';
 
 const ApproveClasses = ({Sdata, refetch}) => {
 
   if(!Sdata){
-    return <div className='min-h-screen text-5xl text-black'>Loading......</div>
+    return <Loader></Loader>
   }
-
+  refetch()
   const {className,classPhoto, _id, classStatus, classRatings} =Sdata
 
   return (
-    <div className="card card-compact w-full bg-base-100 shadow-xl">
+    <div className={`card card-compact w-full bg-base-100 shadow-xl ${classStatus === 'approved' ? 'border-2 border-green-500' : ''}`}>
       <figure><img src={classPhoto} alt="classPhoto" /></figure>
       <div className="card-body">
         <h2 className="card-title">{className}</h2>
