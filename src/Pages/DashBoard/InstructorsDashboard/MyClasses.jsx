@@ -5,6 +5,7 @@ import { AuthContext } from '../../../Components/AuthProvider/Authprovider';
 import Loader from '../../../Components/Loader/Loader';
 import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
 import ManageMyClass from './ManageMyClass';
+import CommonBanner from '../../../Components/CommonBanner/CommonBanner';
 
 const MyClasses = () => {
     const { user } = useContext(AuthContext)
@@ -21,9 +22,10 @@ const MyClasses = () => {
     if (isLoading) {
         return <Loader></Loader>
     }
-    console.log(data)
+    // console.log(data)
     return (
-        <div className='w-full mx-auto'>
+        <div className='w-full mb-auto mx-auto'>
+            <CommonBanner>My Added Classes</CommonBanner>
             {data.length > 0 ? <>
                 <table className="table hover px-8">
                     <thead className='bg-slate-200'>

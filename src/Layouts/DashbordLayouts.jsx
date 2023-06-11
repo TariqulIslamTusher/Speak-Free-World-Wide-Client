@@ -30,6 +30,8 @@ const DashBoardLayouts = () => {
             return res.data
         }
     })
+
+    
     if(!user){
         return <Loader></Loader>
     }

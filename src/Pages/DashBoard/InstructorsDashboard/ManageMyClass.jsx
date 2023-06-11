@@ -1,46 +1,68 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaRegTimesCircle } from 'react-icons/fa';
+import { FaCross, FaRegTimesCircle } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
-const ManageMyClass = ({ singleData, index }) => {
-    const { _id, classImage, className, availableSeat, attendedStudent, feedBack, classStatus } = singleData
+const ManageMyClass = ({ singleData, index, refetch }) => {
 
-    console.log(_id);
+    const [openModal, setOpenModal] = useState(false)
+    const [openUpdateModal, setUpdateModal] = useState(false)
+
+
+
+    const { _id, classImage, className, availableSeat, attendedStudent, feedBack, classStatus, price, description } = singleData
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    
+
+
 
     const onSubmit = (data) => {
-
         data.classStatus = 'pending'
         data.availableSeat = parseInt(data.availableSeat)
         data.price = parseInt(data.price)
         console.log(data);
-        console.log(_id);
-        // fetch(`http://localhost:3000/class/${_id}`, {
-        //     method: 'PATCH',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         toast.success('New Class Added')
-        //         console.log(data)
-        //         reset()
-        //     })
-        // reset()
+        fetch(`http://localhost:3000/class/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setUpdateModal(false)
+                toast.success('Data Updated , Data sent To Admin for Review Again')
+                console.log(data)
+                reset()
+                refetch()
+            })
     };
 
     // for see feedback
-    // console.log(feedBack, index);
-    // const handleUpdateData = (id) => {
-    //     fetch(`http://localhost:3000/class/${id}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //         })
-    // }
+
+    const handleFeedBack = (AdminFeeds) => {
+        setOpenModal(true)
+        console.log(AdminFeeds);
+    }
+
+
+
+    // =======Handling of Delete methodes================
+    const handleDelete = (id) => {
+        fetch(`http://localhost:3000/class/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('item deleted')
+                console.log(data)
+                refetch()
+            })
+    }
+
+
+
 
     return (
         <>
@@ -62,59 +84,91 @@ const ManageMyClass = ({ singleData, index }) => {
                 <td className='text-center'>{classStatus}</td>
                 <th className='flex flex-col justify-between items-center gap-2'>
 
-                    {/* The button to open modal */}
-                    <label htmlFor="my_modal_6" className="btn btn-neutral btn-outline w-full btn-sm">Update Info</label>
 
-                
-                    <button onClick={()=> handleFeedBack(_id)} className="btn btn-accent btn-outline w-full btn-sm ">See FeedBack</button>
+
+                    <button onClick={()=>setUpdateModal(true)} className="btn btn-success btn-outline w-full btn-sm ">Update Info</button>
+
+
+
+                    <button disabled={feedBack ? false : true} onClick={() => handleFeedBack(feedBack)} className="btn btn-ghost btn-outline w-full btn-sm ">See FeedBack</button>
+
+
+                    <button onClick={() => handleDelete(_id)} className="btn btn-error btn-outline w-full btn-sm ">Delete</button>
                 </th>
 
 
 
             </tr>
             {/* Put this part before </body> tag */}
-            <input type="checkbox" id="my_modal_6" className="modal-toggle " />
-            <div className="modal ">
-                <div className="modal-box relative">
-                    <h3 className="font-bold text-center text-green-700 text-xl">Update Info</h3>
+
+            {/* The button to open modal */}
+            {/* <label htmlFor="my_modal_6" className="btn">open modal</label> */}
+
+            {/* Put this part before </body> tag */}
+            {/* <input type="checkbox" id="my_modal_6" className="modal-toggle" /> */}
+
+            <div className={`${openModal ? 'fixed' : 'hidden'} inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75`}>
+                <div className="bg-white w-1/2 p-4 rounded-lg">
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-xl font-bold">Admin's Feedback</h2>
+                        <button
+                            className="text-gray-600 hover:text-gray-800"
+                            onClick={() => setOpenModal(false)}
+                        >
+                            Close
+                        </button>
+                    </div>
+                    <div>{feedBack}</div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div className={`${openUpdateModal? 'fixed' : 'hidden'} overflow-auto z-50 inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50`}>
+                <div className="bg-white w-11/12 md:w-1/2 p-6 rounded-lg relative">
+                    <FaRegTimesCircle onClick={()=>setUpdateModal(false)} className='absolute -right-3 -top-3 btn btn-circle text-red-500 '>X</FaRegTimesCircle>
+                    <div className="text-center text-xl md:text-4xl font-extrabold">Update Your Data</div>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2" >Class Name:</label>
-                            <input className='border border-slate-500 w-full px-3 py-2 rounded-md' type="text" {...register("className", { required: true })} />
+                            <input defaultValue={className} className='border border-slate-500 w-full px-3 py-2 rounded-md' type="text" {...register("className", { required: true })} />
                             {errors.className && <span className='text-red-600'>This field is required</span>}
                         </div>
 
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2" >Photo URL</label>
-                            <input className='border border-slate-500 w-full px-3 py-2 rounded-md' type="text" {...register("classImage", { required: true })} />
+                            <input defaultValue={classImage}  className='border border-slate-500 w-full px-3 py-2 rounded-md' type="text" {...register("classImage", { required: true })} />
                             {errors.classImage && <span className='text-red-600'>This field is required</span>}
                         </div>
 
                         <div className='flex flex-col md:flex-row justify-between md:gap-5'>
                             <div className="mb-4 w-full">
                                 <label className="block text-gray-700 font-bold mb-2" >Available Seat:</label>
-                                <input className='border border-slate-500 w-full px-3 py-2 rounded-md' type="number" {...register("availableSeat", { required: true })} />
+                                <input defaultValue={availableSeat}  className='border border-slate-500 w-full px-3 py-2 rounded-md' type="number" {...register("availableSeat", { required: true })} />
                                 {errors.availableSeat && <span className='text-red-600'>This field is required</span>}
                             </div>
                             <div className="mb-4 w-full">
                                 <label className="block text-gray-700 font-bold mb-2" >Price:</label>
-                                <input className='border border-slate-500 w-full px-3 py-2 rounded-md' type="number" {...register("price", { required: true })} />
+                                <input defaultValue={price}  className='border border-slate-500 w-full px-3 py-2 rounded-md' type="number" {...register("price", { required: true })} />
                                 {errors.price && <span className='text-red-600'>This field is required</span>}
                             </div>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">Description:</label>
-                            <textarea className='border border-slate-500 w-full px-3 py-2 rounded-md'  {...register("description")} />
+                            <textarea defaultValue={description} className='border border-slate-500 w-full px-3 py-2 rounded-md'  {...register("description")} />
                         </div>
 
                         <button className='Cbutton w-full' type="submit">Submit</button>
                     </form>
-                    <div className="modal-action absolute right-3 -top-3">
-                        <label htmlFor="my_modal_6" className='btn bg-transparent btn-sm'><FaRegTimesCircle className='text-4xl text-red-500'></FaRegTimesCircle></label>
-                    </div>
+
                 </div>
             </div>
+
+
         </>
 
     );

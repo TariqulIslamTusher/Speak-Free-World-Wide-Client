@@ -26,7 +26,7 @@ const ManageUser = () => {
 //    console.log(data);
 
    return (
-       <div className='w-11/12 mx-auto'>
+       <div  className='w-full mb-auto mx-auto'>
            <div className="overflow-x-auto p-0 mx-auto">
                <table className="table hover">
                    {/* Table head */}

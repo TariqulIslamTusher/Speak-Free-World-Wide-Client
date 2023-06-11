@@ -28,7 +28,7 @@ const Instructors = () => {
     return (
         <div>
             <CommonBanner>#Instructors</CommonBanner>
-            <div className="overflow-x-auto container mx-auto">
+            <div  className='w-full mb-auto mx-auto'>
                 <table className="table">
                     {/* Table head */}
                     <thead>
