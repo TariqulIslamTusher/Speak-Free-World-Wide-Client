@@ -32,7 +32,15 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 setUpdateModal(false)
-                toast.success('Data Updated , Data sent To Admin for Review Again')
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Data Updated',
+                    text: 'Data sent To Admin for Review Again',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                // toast.success('Data Updated , Data sent To Admin for Review Again')
                 console.log(data)
                 reset()
                 refetch()
@@ -50,14 +58,32 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
 
     // =======Handling of Delete methodes================
     const handleDelete = (id) => {
+
         fetch(`http://localhost:3000/class/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
             .then(data => {
-                toast.success('item deleted')
-                console.log(data)
-                refetch()
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        console.log(data)
+                        refetch()
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+                // toast.success('item deleted')
             })
     }
 
@@ -86,11 +112,11 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
 
 
 
-                    <button onClick={()=>setUpdateModal(true)} className="btn btn-success btn-outline w-full btn-sm ">Update Info</button>
+                    <button onClick={() => setUpdateModal(true)} className="btn btn-success btn-outline w-full btn-sm ">Update Info</button>
 
 
 
-                    <button disabled={feedBack ? false : true} onClick={() => handleFeedBack(feedBack)} className="btn btn-ghost btn-outline w-full btn-sm ">See FeedBack</button>
+                    <button disabled={feedBack ? false : true} onClick={() => handleFeedBack(feedBack)} className="btn btn-ghost btn-outline w-full btn-sm ">{feedBack ? "See FeedBack" : "No FeedBack"}</button>
 
 
                     <button onClick={() => handleDelete(_id)} className="btn btn-error btn-outline w-full btn-sm ">Delete</button>
@@ -127,9 +153,9 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
 
 
 
-            <div className={`${openUpdateModal? 'fixed' : 'hidden'} overflow-auto z-50 inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50`}>
+            <div className={`${openUpdateModal ? 'fixed' : 'hidden'} overflow-auto z-50 inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50`}>
                 <div className="bg-white w-11/12 md:w-1/2 p-6 rounded-lg relative">
-                    <FaRegTimesCircle onClick={()=>setUpdateModal(false)} className='absolute -right-3 -top-3 btn btn-circle text-red-500 '>X</FaRegTimesCircle>
+                    <FaRegTimesCircle onClick={() => setUpdateModal(false)} className='absolute -right-3 -top-3 btn btn-circle text-red-500 '>X</FaRegTimesCircle>
                     <div className="text-center text-xl md:text-4xl font-extrabold">Update Your Data</div>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -141,19 +167,19 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
 
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2" >Photo URL</label>
-                            <input defaultValue={classImage}  className='border border-slate-500 w-full px-3 py-2 rounded-md' type="text" {...register("classImage", { required: true })} />
+                            <input defaultValue={classImage} className='border border-slate-500 w-full px-3 py-2 rounded-md' type="text" {...register("classImage", { required: true })} />
                             {errors.classImage && <span className='text-red-600'>This field is required</span>}
                         </div>
 
                         <div className='flex flex-col md:flex-row justify-between md:gap-5'>
                             <div className="mb-4 w-full">
                                 <label className="block text-gray-700 font-bold mb-2" >Available Seat:</label>
-                                <input defaultValue={availableSeat}  className='border border-slate-500 w-full px-3 py-2 rounded-md' type="number" {...register("availableSeat", { required: true })} />
+                                <input defaultValue={availableSeat} className='border border-slate-500 w-full px-3 py-2 rounded-md' type="number" {...register("availableSeat", { required: true })} />
                                 {errors.availableSeat && <span className='text-red-600'>This field is required</span>}
                             </div>
                             <div className="mb-4 w-full">
                                 <label className="block text-gray-700 font-bold mb-2" >Price:</label>
-                                <input defaultValue={price}  className='border border-slate-500 w-full px-3 py-2 rounded-md' type="number" {...register("price", { required: true })} />
+                                <input defaultValue={price} className='border border-slate-500 w-full px-3 py-2 rounded-md' type="number" {...register("price", { required: true })} />
                                 {errors.price && <span className='text-red-600'>This field is required</span>}
                             </div>
                         </div>

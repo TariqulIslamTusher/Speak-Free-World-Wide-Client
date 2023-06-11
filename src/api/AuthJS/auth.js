@@ -1,5 +1,3 @@
-import { useQueries } from "@tanstack/react-query";
-import useAxiosSecure from "../../CustomHook/AxiosHook/useAxiosSecure";
 
 // save a user to database 
 export const saveUserToDB = user => {
@@ -26,15 +24,10 @@ export const saveUserToDB = user => {
         })
 }
 
-// TODO
-// export const userRole = (user) =>{
-//     const [AxiosSecure] = useAxiosSecure()
-
-//     const { isLoading, data } = useQueries({
-//         queryKey: ['users'],
-//         queryFn: async () => {
-//             const res = await AxiosSecure.get(`/users?email=${user.email}`)
-//             return res.data[0]
-//         }
-//     })
-// }
+// Get the role of the user
+export const getRole = async email => {
+    const res = await fetch(`http://localhost:3000/users?email=${email}`)
+    const data = await res.json()
+    return data[0].role
+   
+}

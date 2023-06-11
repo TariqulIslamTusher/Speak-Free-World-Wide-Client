@@ -13,7 +13,7 @@
 }
 
 .custom-text{
-    @apply text-center font-bold text-transparent bg-gradient-to-b from-cyan-700 to-yellow-400 bg-clip-text p-4
+    @apply text-center font-bold text-transparent bg-gradient-to-b from-white to-yellow-500 bg-clip-text p-4
 
 }
 

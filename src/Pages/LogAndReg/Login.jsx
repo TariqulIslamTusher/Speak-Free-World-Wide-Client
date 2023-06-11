@@ -92,7 +92,8 @@ const Login = () => {
                                 Password
                             </label>
                             <div className='relative'>
-                                <input className='border border-slate-500 w-full px-3 py-2 rounded-md ' type={hide ? 'password' : 'text'} placeholder="Password" {...register("Password", { required: true, minLength: 6 })} />
+                                {/* TODO: DEFAULT VALUE MUST REMOVE */}
+                                <input defaultValue={'111111'} className='border border-slate-500 w-full px-3 py-2 rounded-md ' type={hide ? 'password' : 'text'} placeholder="Password" {...register("Password", { required: true, minLength: 6 })} />
                                 <FaEye onClick={() => setHide(!hide)} className='absolute right-5 top-1/3 '></FaEye>
 
                                 {errors.Password?.type === 'minLength' && <p className='text-red-500'>Password must be minimun 6 in length</p>}

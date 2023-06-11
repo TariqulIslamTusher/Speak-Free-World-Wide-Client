@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 
 const DashBoardLayouts = () => {
-    const {user,  signOutUser } = useContext(AuthContext)
+    const {user,  signOutUser, role } = useContext(AuthContext)
     const navigate = useNavigate()
     // const user =false
     const handleLogOut = () => {
@@ -19,29 +19,13 @@ const DashBoardLayouts = () => {
         toast.info("User Logged Out")
     }
 
-    
-
-    const [AxiosSecure] = useAxiosSecure()
-
-    const { isLoading, data } = useQuery({
-        queryKey: [user],
-        queryFn: async () => {
-            const res = await AxiosSecure.get(`/users?email=${user.email}`)
-            return res.data
-        }
-    })
-
-    
     if(!user){
         return <Loader></Loader>
     }
     // console.log(data, isLoading);
 
-    if (isLoading || data.length <= 0) {
-        return <Loader></Loader>
-    }
 
-    if (data[0].role === 'admin') {
+    if (role === 'admin') {
         return (
             <div className="drawer lg:drawer-open">
 
@@ -71,8 +55,9 @@ const DashBoardLayouts = () => {
 
 
                     {/* Page content here */}
-                    <Outlet></Outlet>
-
+                    <div className="bg-slate-200 w-full min-h-[100vh]">
+                        <Outlet></Outlet>
+                    </div>
 
                 </div>
 
@@ -115,7 +100,7 @@ const DashBoardLayouts = () => {
         );
     }
 
-    if (data[0].role === "instructor") {
+    if (role === "instructor") {
         return (
             <div className="drawer lg:drawer-open">
 
@@ -144,8 +129,9 @@ const DashBoardLayouts = () => {
 
                     </div>
                     {/* Page content here */}
-                    <Outlet></Outlet>
-
+                    <div className="bg-slate-200 w-full min-h-[100vh]">
+                        <Outlet></Outlet>
+                    </div>
 
                 </div>
 
@@ -190,7 +176,7 @@ const DashBoardLayouts = () => {
         );
     }
 
-    if (data[0].role === 'user') {
+    if (role === 'user') {
         return (
             <div className="drawer lg:drawer-open">
 
@@ -219,8 +205,9 @@ const DashBoardLayouts = () => {
 
                     </div>
                     {/* Page content here */}
-                    <Outlet></Outlet>
-
+                    <div className="bg-slate-200 w-full min-h-[100vh]">
+                        <Outlet></Outlet>
+                    </div>
 
                 </div>
 

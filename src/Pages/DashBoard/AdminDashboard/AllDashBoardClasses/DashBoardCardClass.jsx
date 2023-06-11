@@ -24,7 +24,7 @@ const DashBoardCardClass = () => {
     const DeniedData = data.filter(ApData => ApData.classStatus === 'deny')
     const ApprovedData = data.filter(ApData => ApData.classStatus === 'approved')
 
-    console.log( data, ApprovedData, PendingData, DeniedData)
+    console.log(data, ApprovedData, PendingData, DeniedData)
 
     if (isLoading) {
         return <Loader></Loader>
@@ -32,42 +32,44 @@ const DashBoardCardClass = () => {
 
 
     return (
-        <div className='flex flex-col gap-6 py-6 w-10/12 mx-auto'>
-            <CommonBanner>All Classes With Status</CommonBanner>
-            
-            {
-                ApprovedData.length > 0 ? <>
+        <div className="w-full">
+                <CommonBanner>All Classes With Status</CommonBanner>
+            <div className='flex flex-col gap-6 py-8 px-8 md:px-20 mx-auto'>
 
-                    <h2 className="font-bold text-2xl text-yellow-800 underline my-6 ">Approved</h2>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 container mx-auto'>
-                        {
-                            ApprovedData.map(Sdata => <ApproveClasses Sdata={Sdata} refetch={refetch} key={Sdata._id} ></ApproveClasses>)
-                        }
-                    </div>
-                </> : <></>            
-                }
-            {
-                PendingData.length > 0 ? <>
+                {
+                    ApprovedData.length > 0 ? <>
 
-                    <h2 className="font-bold text-2xl text-yellow-800 underline my-6 ">Pending</h2>
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-4 container mx-auto'>
-                        {
-                            PendingData.map(Sdata => <PendingClass Sdata={Sdata} refetch={refetch} key={Sdata._id} ></PendingClass>)
-                        }
-                    </div>
-                </> : <></>            
+                        <h2 className="font-bold text-2xl text-green-600 underline my-4 ">Approved</h2>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 container mx-auto'>
+                            {
+                                ApprovedData.map(Sdata => <ApproveClasses Sdata={Sdata} refetch={refetch} key={Sdata._id} ></ApproveClasses>)
+                            }
+                        </div>
+                    </> : <></>
+                }
+                {
+                    PendingData.length > 0 ? <>
+
+                        <h2 className="font-bold text-2xl text-yellow-400 underline my-4 "> Pending</h2>
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 container mx-auto'>
+                            {
+                                PendingData.map(Sdata => <PendingClass Sdata={Sdata} refetch={refetch} key={Sdata._id} ></PendingClass>)
+                            }
+                        </div>
+                    </> : <></>
                 }
 
-            {
-                DeniedData.length > 0 ? <>
-                    <h2 className="font-bold text-2xl text-yellow-800 underline my-6 ">Denied</h2>
-                    <div className='grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto'>
-                        {
-                            DeniedData.map(Sdata => <DeniedClass Sdata={Sdata} refetch={refetch} key={Sdata._id} ></DeniedClass>)
-                        }
-                    </div>
-                </> : <></>            
+                {
+                    DeniedData.length > 0 ? <>
+                        <h2 className="font-bold text-2xl text-red-600 underline my-4 ">Denied</h2>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto'>
+                            {
+                                DeniedData.map(Sdata => <DeniedClass Sdata={Sdata} refetch={refetch} key={Sdata._id} ></DeniedClass>)
+                            }
+                        </div>
+                    </> : <></>
                 }
+            </div>
         </div>
     );
 };

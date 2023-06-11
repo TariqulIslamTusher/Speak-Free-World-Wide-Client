@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { app } from "../../firebase/firebase.init";
+import { getRole } from "../../api/AuthJS/auth";
 
 
 export const AuthContext = createContext(null)
@@ -11,6 +12,17 @@ const googleProvider = new GoogleAuthProvider()
 const Authprovider = ({ children }) => {
 
     const [user, setUser] = useState('')
+    const [role, setRole] = useState(null)
+
+    useEffect(()=>{
+        if(user){
+            getRole(user.email)
+            .then(data => {
+                setRole(data)
+                console.log(data);
+            })
+        }
+    },[user])
 
     // Loading spinner
     const [loader, setLoader] = useState(true)
@@ -37,6 +49,7 @@ const Authprovider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currUser) => {
             setUser(currUser)
+
             console.log(currUser)
             setLoader(false)
 
@@ -55,7 +68,8 @@ const Authprovider = ({ children }) => {
         LoginWithEmail,
         createAcctWithEmail,
         loader, setLoader,
-        handleGoogle
+        handleGoogle,
+        role, setRole
     }
 
 
