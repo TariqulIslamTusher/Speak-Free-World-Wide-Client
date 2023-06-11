@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../../../CustomHook/AxiosHook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import ManageUserTable from './ManageUserTable';
 import Loader from '../../../Components/Loader/Loader';
 
 const ManageUser = () => {
-   // const [data, setInstructorData] = useState([])
+  
 
    const [AxiosSecure] = useAxiosSecure()
 
    const {isLoading, data = [] , refetch} = useQuery({
-       queryKey: [],
+       queryKey: ['users'],
        queryFn: async ()=>{
            const res = await AxiosSecure('/users')
            return res.data
@@ -21,15 +21,16 @@ const ManageUser = () => {
        return <Loader></Loader>
    }
 
+   
 
 //    console.log(data);
 
    return (
-       <div>
-           <div className="overflow-x-auto container mx-auto">
-               <table className="table ">
+       <div className='w-11/12 mx-auto'>
+           <div className="overflow-x-auto p-0 mx-auto">
+               <table className="table hover">
                    {/* Table head */}
-                   <thead className='bg-slate-300'>
+                   <thead className='bg-slate-200'>
                        <tr>
                            <th>Ser</th>
                            <th>Image</th>

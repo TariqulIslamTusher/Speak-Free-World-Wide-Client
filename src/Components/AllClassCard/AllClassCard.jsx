@@ -10,9 +10,9 @@ const AllClassCard = () => {
     const [AxiosSecure] = useAxiosSecure()
 
     const {data, isLoading} = useQuery({
-        queryKey: [],
+        queryKey: ['class'],
         queryFn: async() =>{
-            const res = await AxiosSecure('/class?sort=classView')
+            const res = await AxiosSecure('/class?classStatus=approved&sort=classView')
             return res.data
         }
     })
@@ -23,7 +23,7 @@ const AllClassCard = () => {
     // console.log('sorting data is', data.slice(0,6), isLoading)
 
     return (
-        <div>
+        <div className='py-5'>
             <SectionTitle heading='Our popular classes' subHeading='Popular Classes basis on viewer number'></SectionTitle>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {

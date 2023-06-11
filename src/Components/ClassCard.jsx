@@ -6,11 +6,11 @@ const ClassCard = ({Sdata}) => {
     return <div className='min-h-screen text-5xl text-black'>Loading......</div>
   }
 
-  const {className,classPhoto, _id, classStatus} =Sdata
+  const {className,classImage, _id, classStatus} =Sdata
 
   return (
     <div className="card card-compact w-full bg-base-100 shadow-xl">
-      <figure><img src={classPhoto} alt="classPhoto" /></figure>
+      <figure><img src={classImage} alt="classImage" /></figure>
       <div className="card-body">
         <h2 className="card-title">{className}</h2>
         <p>{classStatus}</p>

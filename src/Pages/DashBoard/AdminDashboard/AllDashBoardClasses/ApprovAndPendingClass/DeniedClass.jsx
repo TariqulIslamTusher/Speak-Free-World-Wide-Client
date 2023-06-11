@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Loader from '../../../../../Components/Loader/Loader';
+import { toast } from 'react-toastify';
 
 const DeniedClass = ({ Sdata, refetch }) => {
     const [disable, setDisable] = useState(false)
@@ -9,7 +10,7 @@ const DeniedClass = ({ Sdata, refetch }) => {
 
 
 
-    const { className, classPhoto, _id, classStatus, classRatings } = Sdata
+    const { className, classImage, _id, classStatus, classRatings } = Sdata
     // feedback functions
     const textareaRef = useRef(null);
     const handleFeedBack = (id) => {
@@ -26,16 +27,16 @@ const DeniedClass = ({ Sdata, refetch }) => {
       .then(data => {
         console.log(data)
         textareaRef.current.value = ''
-        setDisable(true)
-        refetch
+        refetch()
         toast.success('Feedback sent to Instructor')
+        setDisable(true)
       })
     }
 
 
     return (
         <div className={`card card-compact  w-full bg-red-50 shadow-xl ${classStatus === 'deny' ? 'border-2 border-red-500' : ''}`}>
-            <figure><img src={classPhoto} alt="classPhoto" /></figure>
+            <figure><img  className='object-fit w-full object-center' src={classImage} alt="classImage" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{className}</h2>
                 <p>{classStatus}</p>

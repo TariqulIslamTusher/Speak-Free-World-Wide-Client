@@ -9,6 +9,7 @@ const HomeClassCard = ({Sdata}) => {
       <div className="card-body">
         <h2 className="card-title">{className}</h2>
         <p>{classView}</p>
+        <p>{classStatus}</p>
         <div className="card-actions justify-end">
           <Link to='/classes'><button className="btn btn-outline btn-ghost">Show All</button></Link>
         </div>

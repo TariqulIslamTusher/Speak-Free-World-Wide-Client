@@ -7,7 +7,6 @@ const ManageUserTable = ({ Sdata, index, refetch }) => {
     const { _id, userPhoto, userName, userEmail, role } = Sdata
     const [loader, setLoader] = useState(false)
     const [adminLoader, setAdminLoader] = useState(false)
-
     // making instructor func
     const handleInstructor = (id) => {
         setLoader(true)

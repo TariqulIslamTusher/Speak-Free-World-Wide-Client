@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../CustomHook/AxiosHook/useAxiosSecure';
+import { Link } from 'react-router-dom';
 
 const TableRow = ({ Sdata, index }) => {
     const [classData, setTotalClass] = useState(0)
@@ -14,30 +15,33 @@ const TableRow = ({ Sdata, index }) => {
             })
     }, [Sdata])
 
-return (
-    <>
-        <tr>
-            <td>{index + 1}</td>
-            <td>
-                <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                            <img src={instructorImage} alt="Avatar" />
+    return (
+        <>
+            <tr>
+                <td>{index + 1}</td>
+                <td>
+                    <div className="flex items-center space-x-3">
+                        <div className="avatar">
+                            <div className="mask mask-squircle w-12 h-12">
+                                <img src={instructorImage} alt="Avatar" />
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-            <td>
-                {instructorName}
-            </td>
-            <td>{instructorEmail}</td>
-            <td>0{classData.length}</td>
-            <th>
-                <button onClick={() => console.log(_id)} className="btn btn-neutral btn-outline btn-xs">See Classes</button>
-            </th>
-        </tr>
-    </>
-);
+                </td>
+                <td>
+                    {instructorName}
+                </td>
+                <td>{instructorEmail}</td>
+                <td>0{classData.length}</td>
+                <th>
+                    {/* TODOS : SEE ONLY THIS CLASSES */}
+                    <Link>
+                        <button onClick={() => console.log(_id)} className="btn btn-neutral btn-outline btn-xs">See Classes</button>
+                    </Link>
+                </th>
+            </tr>
+        </>
+    );
 };
 
 export default TableRow;
