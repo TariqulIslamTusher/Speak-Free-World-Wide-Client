@@ -7,9 +7,6 @@ import ParaluxExperience from '../../Components/ParaluxExperience/ParaluxExperie
 
 
 const Home = () => {
-    const { user, role } = useContext(AuthContext)
-    console.log(role);
-
 
     return (
         <div className='bg-yellow-100'>

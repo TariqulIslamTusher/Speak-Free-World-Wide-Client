@@ -21,13 +21,15 @@ const Login = () => {
         setLoader(true)
         const email = data.Email
         const password = data.Password
-        console.log(email, password)
+        // console.log(email, password)
+        console.log(location);
 
         //Login with email function by context api
         LoginWithEmail(email, password)
             .then(res => {
                 setUser(res.user)
                 toast.success('Login Success')
+                // TODO : location state is stil to work
                 navigate(location.state?.pathname || '/', { replace: true })
             })
             .catch(err => {

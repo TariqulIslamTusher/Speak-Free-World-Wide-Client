@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 const Classes = () => {
     const [AxiosSecure] = useAxiosSecure()
 
-    const { isLoading, data = [] } = useQuery({
+    const { isLoading, data = [] , refetch} = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await AxiosSecure('/class?classStatus=approved')
@@ -21,11 +21,11 @@ const Classes = () => {
     }
 
     return (
-        <div>
+        <div className='bg-slate-300'>
             <CommonBanner>All Our Classes</CommonBanner>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 container mx-auto'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-5 container md:px-10 mx-auto'>
                 {
-                    data?.map(Sdata => <ClassCard Sdata={Sdata}></ClassCard>)
+                    data?.map(Sdata => <ClassCard key={Sdata._id} refetch={refetch} Sdata={Sdata}></ClassCard>)
                 }
             </div>
         </div>

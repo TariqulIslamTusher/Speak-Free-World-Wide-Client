@@ -19,7 +19,7 @@ const Authprovider = ({ children }) => {
             getRole(user.email)
             .then(data => {
                 setRole(data)
-                console.log(data);
+                // console.log(data);
             })
         }
     },[user])
