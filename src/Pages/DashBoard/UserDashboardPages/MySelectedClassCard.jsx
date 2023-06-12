@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import Rating from 'react-rating';
-import { FaExpandArrowsAlt, FaRegStar, FaStar } from 'react-icons/fa';
+import { FaDollarSign, FaDumpster, FaExpandArrowsAlt, FaRegStar, FaStar } from 'react-icons/fa';
 import useAxiosSecure from '../../../CustomHook/AxiosHook/useAxiosSecure';
 import Loader from '../../../Components/Loader/Loader';
 import Swal from 'sweetalert2';
+import CheckoutForm from '../PaymentMethode/CheckoutForm';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+
+
+// TODO: PROVIDE PUBLISHABLE KEY
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const MySelectedClassCard = ({ Sdata, refetch }) => {
     const [openModal, setOpenModal] = useState(false)
-
 
     const [AxiosSecure] = useAxiosSecure()
     const [btnLoad, setBtnLoad] = useState(false)
@@ -16,7 +23,10 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
     }
 
 
-    const { _id, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings } = Sdata
+    const { _id, classImage,prevId, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price , classRatings } = Sdata
+    // console.log(Sdata);
+
+    const   modifiedData = {prevId, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price , classRatings }
 
 
     // Pay your Class 
@@ -45,6 +55,31 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
         //         setBtnLoad(false)
         //     }
         // })
+    }
+
+
+    const handleDelete = (id) => {
+        console.log(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't able to revert this later",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#059305',
+            confirmButtonText: 'Delete'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setBtnLoad(false)
+                Swal.fire(
+                    'Success!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            } else {
+                setBtnLoad(false)
+            }
+        })
     }
 
 
@@ -78,32 +113,48 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
 
                     </div>
 
-                    <div className="flex justify-between items-center">
-                        {
-                            btnLoad ?
-                                <button className='Cbutton w-full'>< FaExpandArrowsAlt className='animate-spin'></FaExpandArrowsAlt></button>
-                                :
-                                <button onClick={() => setOpenModal(true)} className="Cbutton w-full">Pay Now</button>
-                        }
+                    <div className="flex justify-between items-center gap-3">
+                        {/* delete button */}
+                        <div className='w-5/12'>
+                            {
+                                btnLoad ?
+                                    <button className='btn btn-error w-full'>< FaExpandArrowsAlt className='animate-spin'></FaExpandArrowsAlt></button>
+                                    :
+                                    <button onClick={() => handleDelete(_id)} className="btn btn-error bg-[#f93b3b]  font-bold w-full">Delete <FaDumpster></FaDumpster> </button>
+                            }
+                        </div>
+                        {/* pay button */}
+                        <div className='w-7/12'>
+                            {
+                                btnLoad ?
+                                    <button className='Cbutton font-bold w-full'>< FaExpandArrowsAlt className='animate-spin'></FaExpandArrowsAlt></button>
+                                    :
+                                    <button onClick={() => setOpenModal(true)} className="Cbutton w-full">Pay Now <FaDollarSign></FaDollarSign> </button>
+                            }
+                        </div>
                     </div>
                 </div >
             </div >
-                    
-                    
-                    
-                      {/* Modal for payment */}
+
+
+
+            {/* Modal for payment */}
             <div className={`${openModal ? 'fixed' : 'hidden'} inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-20`}>
                 <div className="bg-white w-1/2 p-4 rounded-lg">
-                    <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-xl font-bold">Pay By Debit/ Credit Card</h2>
+                    <div className="flex justify-end items-center mb-4 relative">
                         <button
-                            className="text-gray-600 hover:text-gray-800"
+                            className="text-gray-600 hover:text-gray-800 absolute -right-7 -top-7 btn btn-error btn-circle"
                             onClick={() => setOpenModal(false)}
                         >
-                            Close
+                            X
                         </button>
                     </div>
-                    <div></div>
+                    <h2 className="text-2xl text-center font-bold text-green-600">PAYMENTS CREDENTIALS</h2>
+                    <div>
+                        <Elements stripe={stripePromise}>
+                            <CheckoutForm  modifiedData={ modifiedData} refetch={refetch} setOpenModal={setOpenModal} key={_id}/>
+                        </Elements>
+                    </div>
                 </div>
             </div>
         </>
