@@ -21,3 +21,6 @@
 .Cbutton{
     @apply btn btn-accent bg-yellow-500 font-bold hover:bg-yellow-400 border-0 transition-all duration-150
 }
+.dd{
+    color : #059305
+}

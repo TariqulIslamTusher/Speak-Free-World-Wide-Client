@@ -32,7 +32,7 @@ const TableRow = ({ Sdata, index }) => {
                     {instructorName}
                 </td>
                 <td>{instructorEmail}</td>
-                <td>0{classData.length}</td>
+                <td className='text-center'>{classData.length}</td>
                 <th>
                     {/* TODOS : SEE ONLY THIS CLASSES */}
                     <Link>

@@ -28,17 +28,17 @@ const Instructors = () => {
     return (
         <div>
             <CommonBanner>#Instructors</CommonBanner>
-            <div  className='w-full mb-auto mx-auto'>
+            <div  className='w-10/12 mb-auto mx-auto'>
                 <table className="table">
                     {/* Table head */}
                     <thead>
-                        <tr>
+                        <tr className='text-xl font-bold'>
                             <th>Ser</th>
                             <th>Image</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Number of Classes</th>
-                            <th></th>
+                            <th>Details</th>
                         </tr>
                     </thead>
                  
