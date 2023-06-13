@@ -17,6 +17,7 @@ import DashBoardHome from "./Pages/DashBoard/DashBoardHome";
 import DashBoardCardClass from "./Pages/DashBoard/AdminDashboard/AllDashBoardClasses/DashBoardCardClass";
 import MyClasses from "./Pages/DashBoard/InstructorsDashboard/MyClasses";
 import AddNewClass from "./Pages/DashBoard/InstructorsDashboard/AddNewClass";
+import EnrolledHistory from "./Pages/DashBoard/UserDashboardPages/EnrolledHistory/EnrolledHistory";
 
 
 export const router = createBrowserRouter([
@@ -82,7 +83,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/myClasses',
                 element: <MyClasses></MyClasses>
-            }
+            },
+            {
+                path: '/dashboard/enrolledHistory',
+                element: <EnrolledHistory></EnrolledHistory>
+            },
         ]
     }
 ])

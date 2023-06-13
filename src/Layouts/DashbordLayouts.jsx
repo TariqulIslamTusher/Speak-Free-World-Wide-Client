@@ -241,6 +241,11 @@ const DashBoardLayouts = () => {
                             <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-emerald-900 px-5 py-2 rounded-xl border-cyan-800 text-lg transition-all duration-200'>My Enrolled Class</li>
                         </NavLink>
 
+                        <NavLink className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "DSactive" : ""} to='/dashboard/enrolledHistory'>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-emerald-900 px-5 py-2 rounded-xl border-cyan-800 text-lg transition-all duration-200'>Enrolled History</li>
+                        </NavLink>
+
                         <button className='Cbutton mt-auto' onClick={handleLogOut}>LogOut</button>
 
                     </ul>
