@@ -4,9 +4,12 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import useAxiosSecure from '../../../CustomHook/AxiosHook/useAxiosSecure';
 import { AuthContext } from '../../../Components/AuthProvider/Authprovider';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
-const CheckoutForm = ({ modifiedData , setOpenModal, refetch}) => {
-  const {price, prevId} = modifiedData
+const CheckoutForm = ({ modifiedData, setOpenModal, refetch }) => {
+  const { price, prevId } = modifiedData
+  const total = parseFloat(price.toFixed(2))
+  // console.log(total);
   const { user } = useContext(AuthContext)
   const [AxiosSecure] = useAxiosSecure()
   const [cardErr, setCardErr] = useState('')
@@ -16,15 +19,15 @@ const CheckoutForm = ({ modifiedData , setOpenModal, refetch}) => {
 
 
   useEffect(() => {
-    AxiosSecure.post('/create-payment-intent', { price })
+    AxiosSecure.post('/create-payment-intent', { total })
       .then(res => {
         setClientSecret(res.data.clientSecret)
         // console.log(res.data.clientSecret)
       })
-    }, [])
+  }, [])
 
 
-    // console.log(clientSecret);
+  // console.log(clientSecret);
 
 
   const handleSubmit = async (event) => {
@@ -35,7 +38,7 @@ const CheckoutForm = ({ modifiedData , setOpenModal, refetch}) => {
       return;
     }
 
-    
+
     const card = elements.getElement(CardElement);
 
     if (card == null) {
@@ -73,34 +76,41 @@ const CheckoutForm = ({ modifiedData , setOpenModal, refetch}) => {
     if (confirmError) {
       console.log(confirmError);
       setCardErr(confirmError.message)
-    } else{
-      console.log('fine', paymentIntent)
-      if(paymentIntent.status === 'succeeded'){
+    } else {
+      console.log(paymentIntent)
+      if (paymentIntent.status === 'succeeded') {
+
         const paymentInfo = {
           ...modifiedData,
           transactionId: paymentIntent.id,
           date: new Date()
         }
-
-        // set to the my enrolled database
-        AxiosSecure.post('/myEnrolled', paymentInfo)
-        .then(res => {
-          refetch()
-          if(res.data.insertedId){
-            toast.success('Payment Completed')
+        // Deleted the enrolled class from bookings
+        AxiosSecure.delete(`/booking/${prevId}`)
+          .then(res => {
+            console.log(res.data);
             refetch()
-          }
-          // AxiosSecure.delete(`/booking/${prevId}`)
-          // .then(res => {
-          //   refetch()
-          //   console.log(res.data);
-          //   setOpenModal(false)
-          // })
-          
-        })
+            setOpenModal(false)
+            Swal.fire({
+              position: 'top-center',
+              icon: 'success',
+              title: 'Your payment completed',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
+            // set to the my enrolled database
+            AxiosSecure.post('/myEnrolled', paymentInfo)
+              .then(res => {
+                if (res.data.id) {
+                }
+              }).catch(err => console.log(err.message))
+          }) .catch(err => console.log(err.message))
+
+
       }
     }
-    
+
 
 
   };

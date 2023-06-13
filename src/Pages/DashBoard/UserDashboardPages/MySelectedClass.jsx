@@ -27,11 +27,12 @@ const MySelectedClass = () => {
             <CommonBanner>Your Booked Class</CommonBanner>
             <div className="px-8 py-5">
                 {
-                    data? <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    data && data.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                         {
                             data.map(Sdata => <MySelectedClassCard key={Sdata._id} Sdata={Sdata} refetch={refetch}></MySelectedClassCard>)
                         }
                     </div> 
+                    
                     :
 
                     <NoDataFound>

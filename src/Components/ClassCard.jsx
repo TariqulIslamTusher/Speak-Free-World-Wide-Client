@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider/Authprovider';
 import Rating from 'react-rating';
@@ -10,27 +10,48 @@ import Loader from './Loader/Loader';
 const ClassCard = ({ Sdata, refetch }) => {
   // const [disable, setDisable] = useState(false)
   const [btnLoad, setBtnLoad] = useState(false)
+  const [stateChange, setStateChange] = useState(false)
+  const [bookedData, setBookedData] = useState(false)
 
   const [AxiosSecure] = useAxiosSecure()
   const { user, role } = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
 
+
   if (!Sdata) {
     return <Loader></Loader>
   }
 
-
-
   const { _id, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings } = Sdata
 
-  const modifiedData = { prevId: _id, userEmail: user?.email, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings }
+  const modifiedData = { booked: user.email, prevId: _id, userEmail: user?.email, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings }
+
+
+
+  // useing for disabling book now btn if user booked it once
+  useEffect(() => {
+    AxiosSecure(`/booking?booked=${user.email}`)
+      .then(res => {
+        setBookedData(res.data);
+      })
+  }, [stateChange])
+
+
+//   let booked =  bookedData.map(SingleBook => SingleBook.booked === user.email)
+
+
+// console.log(booked , _id);
+
+ 
 
   const isDisable = role !== 'user' || availableSeat === 0
+
 
   // console.log(prevId);
 
   const handleBookings = (object) => {
+    setStateChange(!stateChange)
     setBtnLoad(true)
     if (availableSeat === 0) {
       setBtnLoad(false)

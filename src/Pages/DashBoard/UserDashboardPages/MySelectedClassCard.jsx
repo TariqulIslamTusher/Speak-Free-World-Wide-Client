@@ -23,10 +23,10 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
     }
 
 
-    const { _id, classImage,prevId, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price , classRatings } = Sdata
+    const { _id, classImage, prevId, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings } = Sdata
     // console.log(Sdata);
 
-    const   modifiedData = {prevId, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price , classRatings }
+    const modifiedData = { prevId, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings }
 
 
     // Pay your Class 
@@ -60,6 +60,7 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
 
     const handleDelete = (id) => {
         console.log(id);
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't able to revert this later",
@@ -71,13 +72,24 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 setBtnLoad(false)
-                Swal.fire(
-                    'Success!',
-                    'Your file has been deleted.',
-                    'success'
-                )
-            } else {
-                setBtnLoad(false)
+
+                // Deleted the enrolled class from bookings
+                AxiosSecure.delete(`/booking/${id}`)
+                    .then(res => {
+                        console.log(res.data);
+                        refetch()
+                        setOpenModal(false)
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'Your payment completed',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+
+
+                    }).catch(err => console.log(err.message))
+                refetch()
             }
         })
     }
@@ -120,7 +132,7 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
                                 btnLoad ?
                                     <button className='btn btn-error w-full'>< FaExpandArrowsAlt className='animate-spin'></FaExpandArrowsAlt></button>
                                     :
-                                    <button onClick={() => handleDelete(_id)} className="btn btn-error bg-[#f93b3b]  font-bold w-full">Delete <FaDumpster></FaDumpster> </button>
+                                    <button onClick={() => handleDelete(prevId)} className="btn btn-error bg-[#f93b3b]  font-bold w-full">Delete <FaDumpster></FaDumpster> </button>
                             }
                         </div>
                         {/* pay button */}
@@ -152,7 +164,7 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
                     <h2 className="text-2xl text-center font-bold text-green-600">PAYMENTS CREDENTIALS</h2>
                     <div>
                         <Elements stripe={stripePromise}>
-                            <CheckoutForm  modifiedData={ modifiedData} refetch={refetch} setOpenModal={setOpenModal} key={_id}/>
+                            <CheckoutForm modifiedData={modifiedData} refetch={refetch} setOpenModal={setOpenModal} key={_id} />
                         </Elements>
                     </div>
                 </div>
