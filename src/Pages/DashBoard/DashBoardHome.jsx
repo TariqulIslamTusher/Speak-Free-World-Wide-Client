@@ -33,12 +33,12 @@ const DashBoardHome = () => {
         AxiosSecure('/onlyclass')
             .then(res => {
                 setalldata(res.data)
-                console.log(res.data);
+                //console.log(res.data);
             })
     }, [])
 
 
-    // console.log(res.data);
+    // //console.log(res.data);
 
     const approved = alldata.filter(sData => sData.classStatus === 'approved')
     const pending = alldata.filter(sData => sData.classStatus === 'pending')

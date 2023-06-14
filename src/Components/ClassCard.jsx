@@ -36,12 +36,12 @@ const ClassCard = ({ Sdata, refetch }) => {
   const isDisable = availableSeat === 0 || disable
 
 
-  // console.log(user);
+  // //console.log(user);
 
   const handleBookings = (object) => {
 
     setDisable(true)
-    // console.log(_id);
+    // //console.log(_id);
 
     if (!user) {
       toast.info('You are to login first')
@@ -49,7 +49,7 @@ const ClassCard = ({ Sdata, refetch }) => {
     } else if (user && role === 'admin' || role === "instructor") {
       return toast.warning('Can not bookes as admin/instructor')
     } else{
-      
+
     }
 
     setStateChange(!stateChange)
@@ -70,19 +70,19 @@ const ClassCard = ({ Sdata, refetch }) => {
         // update the booked data on classDB
         AxiosSecure.patch(`/class/${_id}`, updoc)
           .then(res => {
-            console.log(res.data);
+            //console.log(res.data);
 
 
           })
 
         toast.success('Class Booked')
-        console.log(res.data);
+        //console.log(res.data);
         setBtnLoad(false)
       })
       .catch(err => {
         toast.error(err.message)
         setBtnLoad(false)
-        console.log(err)
+        //console.log(err)
       })
 
   }

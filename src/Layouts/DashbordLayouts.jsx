@@ -18,11 +18,11 @@ const DashBoardLayouts = () => {
         navigate('/')
         toast.info("User Logged Out")
     }
-    console.log(user);
+    //console.log(user);
     if(!user){
         return <Loader></Loader>
     }
-    // console.log(data, isLoading);
+    // //console.log(data, isLoading);
 
 
     if (role === 'admin') {

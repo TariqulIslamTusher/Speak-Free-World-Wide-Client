@@ -27,7 +27,7 @@ const DashBoardCardClass = () => {
     const DeniedData = data.filter(ApData => ApData.classStatus === 'deny')
     const ApprovedData = data.filter(ApData => ApData.classStatus === 'approved')
 
-    console.log(data, ApprovedData, PendingData, DeniedData)
+    //console.log(data, ApprovedData, PendingData, DeniedData)
 
     if (isLoading) {
         return <Loader></Loader>

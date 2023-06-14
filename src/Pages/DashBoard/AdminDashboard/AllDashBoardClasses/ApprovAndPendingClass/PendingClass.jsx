@@ -31,7 +31,7 @@ const PendingClass = ({ Sdata, refetch }) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        //console.log(data);
         setLoader(false)
         refetch()
         Swal.fire(
@@ -66,7 +66,7 @@ const PendingClass = ({ Sdata, refetch }) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data)
 
         textareaRef.current.value = ''
         toast.success('Feedback sent to Instructor')
@@ -92,7 +92,7 @@ const PendingClass = ({ Sdata, refetch }) => {
             refetch()
             setDenyLoader(false)
             refetch()
-            console.log(data);
+            //console.log(data);
             refetch()
           })
 

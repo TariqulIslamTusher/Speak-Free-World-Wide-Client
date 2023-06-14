@@ -24,7 +24,7 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
 
 
     const { _id, classImage, prevId, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings } = Sdata
-    // console.log(Sdata);
+    // //console.log(Sdata);
 
     const modifiedData = { prevId, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings }
 
@@ -37,7 +37,7 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
 
 
     const handleDelete = (id) => {
-        console.log(id);
+        //console.log(id);
 
         Swal.fire({
             title: 'Are you sure?',
@@ -54,7 +54,7 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
                 // Deleted the enrolled class from bookings
                 AxiosSecure.delete(`/booking/${id}`)
                     .then(res => {
-                        console.log(res.data);
+                        //console.log(res.data);
                         refetch()
                         setOpenModal(false)
                         Swal.fire({

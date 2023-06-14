@@ -33,12 +33,12 @@ const EnrolledHistory = () => {
     // const handleDelete =()=>{
     //     AxiosSecure.delete('/enrolled')
     //     .then(res=>{
-    //         console.log(res.data);
+    //         //console.log(res.data);
     //     })
     // }
 
 
-    console.log(data);
+    //console.log(data);
 
     return (
         <div>

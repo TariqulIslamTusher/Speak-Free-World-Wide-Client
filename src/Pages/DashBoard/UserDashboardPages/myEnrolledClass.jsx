@@ -29,7 +29,7 @@ const MyEnrolledClass = () => {
         return <Loader></Loader>
     }
 
-    console.log(data);
+    //console.log(data);
 
     return (
         <div>

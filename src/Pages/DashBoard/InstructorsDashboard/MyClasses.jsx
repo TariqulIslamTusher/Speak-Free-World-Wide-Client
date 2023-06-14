@@ -22,7 +22,7 @@ const MyClasses = () => {
     if (isLoading) {
         return <Loader></Loader>
     }
-    // console.log(data)
+    // //console.log(data)
     return (
         <div className='w-full mb-auto mx-auto'>
             <CommonBanner>My Added Classes</CommonBanner>

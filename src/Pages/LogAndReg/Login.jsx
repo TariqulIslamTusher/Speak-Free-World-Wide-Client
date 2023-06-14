@@ -21,8 +21,8 @@ const Login = () => {
         setLoader(true)
         const email = data.Email
         const password = data.Password
-        // console.log(email, password)
-        console.log(location);
+        // //console.log(email, password)
+        //console.log(location);
 
         //Login with email function by context api
         LoginWithEmail(email, password)
@@ -52,7 +52,7 @@ const Login = () => {
                 setUser(loggedUser);
             })
             .catch(err => {
-                console.log(err);
+                //console.log(err);
                 toast.error(err.message)
             })
     }

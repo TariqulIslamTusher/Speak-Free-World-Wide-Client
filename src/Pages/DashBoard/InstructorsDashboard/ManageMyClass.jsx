@@ -42,7 +42,7 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
                     timer: 2000
                 })
                 // toast.success('Data Updated , Data sent To Admin for Review Again')
-                console.log(data)
+                //console.log(data)
                 reset()
                 refetch()
             })
@@ -52,7 +52,7 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
 
     const handleFeedBack = (AdminFeeds) => {
         setOpenModal(true)
-        console.log(AdminFeeds);
+        //console.log(AdminFeeds);
     }
 
 
@@ -79,7 +79,7 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        console.log(data)
+                        //console.log(data)
                         refetch()
                         Swal.fire(
                             'Deleted!',

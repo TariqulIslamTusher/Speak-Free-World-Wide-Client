@@ -27,7 +27,7 @@ const DeniedClass = ({ Sdata, refetch }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                //console.log(data)
                 textareaRef.current.value = ''
                 refetch()
                 toast.success('Feedback sent to Instructor')

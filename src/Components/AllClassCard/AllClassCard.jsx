@@ -20,7 +20,7 @@ const AllClassCard = () => {
     if(isLoading){
         return <Loader></Loader>
     }
-    // console.log('sorting data is', data.slice(0,6), isLoading)
+    // //console.log('sorting data is', data.slice(0,6), isLoading)
 
     return (
         <div className='py-5'>

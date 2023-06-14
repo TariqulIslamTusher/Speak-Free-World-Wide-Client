@@ -31,9 +31,9 @@ const Register = () => {
         const photoURL = data.url
 
         if (password !== confirmPass) {
-            return console.log('pass does not matched');
+            return //console.log('pass does not matched');
         }
-        // console.log(name, email, password, confirmPass, photoURL, data);
+        // //console.log(name, email, password, confirmPass, photoURL, data);
 
         // creating user with email
         createAcctWithEmail(email, password)
@@ -41,31 +41,31 @@ const Register = () => {
                 const loggedUser = res.user;
                 // use the function to save the user in the Database
                 // calling the photo and url updating function
-                console.log(loggedUser)
+                //console.log(loggedUser)
                 updatePhotoAndUrl(loggedUser)
                     .then(() => {
 
                     })
                     .catch((error) => {
-                        console.log('error to upload photoAndUrl');
+                        //console.log('error to upload photoAndUrl');
                     });
 
                 setUser(loggedUser);
                 signOutUser()
                 LoginWithEmail(email, password)
                     .then(res => {
-                        console.log(res.user)
+                        //console.log(res.user)
                         saveUserToDB(res.user)
                         toast.success('Registration Success')
                         navigate(location?.state?.pathname || '/', { replace: true })
                     }).catch(err => {
-                        console.log(err);
+                        //console.log(err);
                     })
             })
             .catch(err => {
                 toast.error(err.message)
                 setLoader(false)
-                console.log(err);
+                //console.log(err);
             })
 
 
@@ -86,7 +86,7 @@ const Register = () => {
                 saveUserToDB(loggedUser)
             })
             .catch(err => {
-                console.log(err);
+                //console.log(err);
                 toast.error(err.message)
             })
     }

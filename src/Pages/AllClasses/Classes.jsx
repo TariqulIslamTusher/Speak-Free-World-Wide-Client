@@ -25,7 +25,7 @@ const Classes = () => {
     if (isLoading) {
         return <Loader></Loader>
     }
-    console.log(data);
+    //console.log(data);
     return (
         <div className='bg-slate-300'>
             <CommonBanner>All Our Classes</CommonBanner>

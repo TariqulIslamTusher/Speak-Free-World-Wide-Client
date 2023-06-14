@@ -18,7 +18,7 @@ const AddNewClass = () => {
         data.availableSeat = parseInt(data.availableSeat)
         data.price = parseFloat(data.price)
         data.classRatings = parseInt(data.classRatings)
-        console.log(data);
+        //console.log(data);
 
         fetch('https://speak-free-server.vercel.app/class', {
             method: 'POST',
@@ -31,7 +31,7 @@ const AddNewClass = () => {
             .then(res => res.json())
             .then(data => {
                 toast.success('New Class Added')
-                console.log(data)
+                //console.log(data)
                 reset()
             })
 

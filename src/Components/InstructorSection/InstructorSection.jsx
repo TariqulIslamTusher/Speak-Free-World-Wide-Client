@@ -26,13 +26,13 @@ const InstructorSection = () => {
             return res.data
         }
     })
-    // console.log(data.slice(0,6), isLoading)
+    // //console.log(data.slice(0,6), isLoading)
 
     if (isLoading) {
         return <Loader></Loader>
     }
 
-    console.log(data);
+    //console.log(data);
 
     return (
         <>

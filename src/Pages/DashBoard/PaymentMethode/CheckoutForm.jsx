@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const CheckoutForm = ({ modifiedData, setOpenModal, refetch }) => {
   const { price, prevId } = modifiedData
   const total = parseFloat(price.toFixed(2))
-  // console.log(total);
+  // //console.log(total);
   const { user } = useContext(AuthContext)
   const [AxiosSecure] = useAxiosSecure()
   const [cardErr, setCardErr] = useState('')
@@ -22,12 +22,12 @@ const CheckoutForm = ({ modifiedData, setOpenModal, refetch }) => {
     AxiosSecure.post('/create-payment-intent', { total })
       .then(res => {
         setClientSecret(res.data.clientSecret)
-        // console.log(res.data.clientSecret)
+        // //console.log(res.data.clientSecret)
       })
   }, [])
 
 
-  // console.log(clientSecret);
+  // //console.log(clientSecret);
 
 
   const handleSubmit = async (event) => {
@@ -52,10 +52,10 @@ const CheckoutForm = ({ modifiedData, setOpenModal, refetch }) => {
     });
 
     if (error) {
-      console.log('error', error);
+      //console.log('error', error);
       setCardErr(error.message)
     } else {
-      console.log('PaymentMethod', paymentMethod);
+      //console.log('PaymentMethod', paymentMethod);
       setCardErr('')
     }
 
@@ -74,10 +74,10 @@ const CheckoutForm = ({ modifiedData, setOpenModal, refetch }) => {
     )
 
     if (confirmError) {
-      console.log(confirmError);
+      //console.log(confirmError);
       setCardErr(confirmError.message)
     } else {
-      console.log(paymentIntent)
+      //console.log(paymentIntent)
       if (paymentIntent.status === 'succeeded') {
 
         const paymentInfo = {
@@ -89,7 +89,7 @@ const CheckoutForm = ({ modifiedData, setOpenModal, refetch }) => {
         // Deleted the enrolled class from bookings
         AxiosSecure.delete(`/booking/${prevId}`)
           .then(res => {
-            console.log(res.data);
+            //console.log(res.data);
             refetch()
             setOpenModal(false)
             Swal.fire({

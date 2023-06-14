@@ -1,7 +1,7 @@
 
 // save a user to database 
 export const saveUserToDB = user => {
-    console.log(user);
+    //console.log(user);
     const currUser = {
         userPhoto: user.photoURL,
         userName: user.displayName,
@@ -19,7 +19,7 @@ export const saveUserToDB = user => {
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            https://speak-free-server.vercel.app(data);
         })
 }
 

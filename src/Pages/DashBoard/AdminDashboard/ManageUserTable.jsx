@@ -37,7 +37,7 @@ const ManageUserTable = ({ Sdata, index, refetch }) => {
                             'User Role Set as Instructor',
                             'success'
                         )
-                        console.log(data);
+                        //console.log(data);
                         refetch()
                     })
 
@@ -76,7 +76,7 @@ const ManageUserTable = ({ Sdata, index, refetch }) => {
                             'User Role Set as Admin',
                             'success'
                         )
-                        console.log(data);
+                        //console.log(data);
                         refetch()
                     })
             }

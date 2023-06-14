@@ -21,7 +21,7 @@ const Authprovider = ({ children }) => {
             getRole(user.email)
                 .then(data => {
                     setRole(data)
-                    // console.log(data);
+                    // //console.log(data);
                 })
         }
     }, [user])
@@ -60,7 +60,7 @@ const Authprovider = ({ children }) => {
                 //     body: JSON.stringify({ email: currUser?.email })
                 // }).then(res => res.json())
                 //     .then(data => {
-                //         console.log(data);
+                //         //console.log(data);
                 //         localStorage.setItem('access-token', data.token)
                 //     })
 
@@ -73,7 +73,7 @@ const Authprovider = ({ children }) => {
                 localStorage.removeItem('access-token')
                 setLoader(false)
             }
-            console.log(currUser)
+            //console.log(currUser)
 
         })
         return () => {
