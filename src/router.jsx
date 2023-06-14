@@ -18,6 +18,10 @@ import DashBoardCardClass from "./Pages/DashBoard/AdminDashboard/AllDashBoardCla
 import MyClasses from "./Pages/DashBoard/InstructorsDashboard/MyClasses";
 import AddNewClass from "./Pages/DashBoard/InstructorsDashboard/AddNewClass";
 import EnrolledHistory from "./Pages/DashBoard/UserDashboardPages/EnrolledHistory/EnrolledHistory";
+import PrivateRoutes from "./Pages/PrivateRoutes/PrivateRoutes";
+import IsAdmin from "./Pages/PrivateRoutes/IsAdmin";
+import IsInstructor from "./Pages/PrivateRoutes/IsInstructor";
+import IsUser from "./Pages/PrivateRoutes/IsUser";
 
 
 export const router = createBrowserRouter([
@@ -54,39 +58,39 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <DashBoardHome></DashBoardHome>
+                element: <PrivateRoutes><DashBoardHome></DashBoardHome></PrivateRoutes>
             },
             {
                 path: '/dashboard/mySelectedClass',
-                element: <MySelectedClass></MySelectedClass>
+                element: <PrivateRoutes><IsUser><MySelectedClass></MySelectedClass></IsUser> </PrivateRoutes>
             },
             {
                 path: '/dashboard/myEnrolledClass',
-                element: <MyEnrolledClass></MyEnrolledClass>
+                element: <PrivateRoutes><IsUser><MyEnrolledClass></MyEnrolledClass></IsUser> </PrivateRoutes>
             },
             {
                 path: '/dashboard/approveClass',
-                element: <ApproveClasses></ApproveClasses>
+                element: <PrivateRoutes><IsAdmin><ApproveClasses></ApproveClasses></IsAdmin></PrivateRoutes>
             },
             {
                 path: '/dashboard/manageClass',
-                element: <ManageUser></ManageUser>
+                element: <PrivateRoutes><IsAdmin><ManageUser></ManageUser></IsAdmin> </PrivateRoutes>
             },
             {
                 path: '/dashboard/dashboardClasses',
-                element: <DashBoardCardClass></DashBoardCardClass>
+                element: <PrivateRoutes><DashBoardCardClass></DashBoardCardClass></PrivateRoutes>
             },
             {
                 path: '/dashboard/addNewClass',
-                element: <AddNewClass></AddNewClass>
+                element: <PrivateRoutes><IsInstructor><AddNewClass></AddNewClass></IsInstructor> </PrivateRoutes>
             },
             {
                 path: '/dashboard/myClasses',
-                element: <MyClasses></MyClasses>
+                element: <PrivateRoutes><IsInstructor><MyClasses></MyClasses></IsInstructor> </PrivateRoutes>
             },
             {
                 path: '/dashboard/enrolledHistory',
-                element: <EnrolledHistory></EnrolledHistory>
+                element: <PrivateRoutes><IsUser><EnrolledHistory></EnrolledHistory></IsUser> </PrivateRoutes>
             },
         ]
     }

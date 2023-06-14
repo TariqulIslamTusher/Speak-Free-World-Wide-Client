@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider/Authprovider';
 import Rating from 'react-rating';
 import { FaExpandArrowsAlt, FaRegStar, FaStar } from 'react-icons/fa';
@@ -15,7 +15,6 @@ const ClassCard = ({ Sdata, refetch }) => {
 
   const [AxiosSecure] = useAxiosSecure()
   const { user, role } = useContext(AuthContext)
-  const navigate = useNavigate()
   const location = useLocation()
 
 
@@ -25,13 +24,13 @@ const ClassCard = ({ Sdata, refetch }) => {
 
   const { _id, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings } = Sdata
 
-  const modifiedData = { booked: user.email, prevId: _id, userEmail: user?.email, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings }
+  const modifiedData = { booked: user?.email, prevId: _id, userEmail: user?.email, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings }
 
 
 
   // useing for disabling book now btn if user booked it once
   useEffect(() => {
-    AxiosSecure(`/booking?booked=${user.email}`)
+    AxiosSecure(`/booking?booked=${user?.email}`)
       .then(res => {
         setBookedData(res.data);
       })
@@ -45,12 +44,17 @@ const ClassCard = ({ Sdata, refetch }) => {
 
  
 
-  const isDisable = role !== 'user' || availableSeat === 0
+  const isDisable = availableSeat === 0
 
 
   // console.log(prevId);
 
   const handleBookings = (object) => {
+
+    if(role !== 'user'){
+      return <Navigate to='/login' replace state={location}></Navigate>
+    }
+
     setStateChange(!stateChange)
     setBtnLoad(true)
     if (availableSeat === 0) {
