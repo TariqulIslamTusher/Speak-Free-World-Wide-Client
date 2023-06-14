@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import ApproveClasses from './ApprovAndPendingClass/ApproveClasses';
 import PendingClass from './ApprovAndPendingClass/PendingClass';
@@ -6,13 +6,16 @@ import useAxiosSecure from '../../../../CustomHook/AxiosHook/useAxiosSecure';
 import Loader from '../../../../Components/Loader/Loader';
 import CommonBanner from '../../../../Components/CommonBanner/CommonBanner';
 import DeniedClass from './ApprovAndPendingClass/DeniedClass';
+import { AuthContext } from '../../../../Components/AuthProvider/Authprovider';
 
 const DashBoardCardClass = () => {
+    const {user, loader} = useContext(AuthContext)
     const [AxiosSecure] = useAxiosSecure()
 
 
     const { isLoading, data = [], refetch } = useQuery({
-        queryKey: ['class'],
+        queryKey: ['class', user.email],
+        enabled: !loader,
         queryFn: async () => {
             const res = await AxiosSecure('/class')
             return res.data

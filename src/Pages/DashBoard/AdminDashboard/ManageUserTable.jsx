@@ -25,6 +25,7 @@ const ManageUserTable = ({ Sdata, index, refetch }) => {
                 fetch(`http://localhost:3000/users/${id}`, {
                     method: 'PATCH',
                     headers: {
+                        authorization: `Bearer ${localStorage.getItem('access-token')}`,
                         "content-type": "application/json"
                     },
                     body: JSON.stringify({ role: 'instructor' })
@@ -42,7 +43,7 @@ const ManageUserTable = ({ Sdata, index, refetch }) => {
 
             }
         })
-        
+
     }
 
     // making admin func
@@ -63,6 +64,7 @@ const ManageUserTable = ({ Sdata, index, refetch }) => {
                 fetch(`http://localhost:3000/users/${id}`, {
                     method: 'PATCH',
                     headers: {
+                        authorization: `Bearer ${localStorage.getItem('access-token')}`,
                         "content-type": "application/json"
                     },
                     body: JSON.stringify({ role: 'admin' })

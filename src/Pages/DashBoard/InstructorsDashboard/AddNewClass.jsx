@@ -23,6 +23,7 @@ const AddNewClass = () => {
         fetch('http://localhost:3000/class', {
             method: 'POST',
             headers: {
+                authorization: `Bearer ${localStorage.getItem('access-token')}`,
                 'content-type': 'application/json'
             },
             body: JSON.stringify(data)

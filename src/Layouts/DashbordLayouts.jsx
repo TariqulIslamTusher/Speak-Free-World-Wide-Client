@@ -18,7 +18,7 @@ const DashBoardLayouts = () => {
         navigate('/')
         toast.info("User Logged Out")
     }
-
+    console.log(user);
     if(!user){
         return <Loader></Loader>
     }

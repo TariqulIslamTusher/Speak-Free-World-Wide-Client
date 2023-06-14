@@ -24,6 +24,8 @@ const EnrolledHistory = () => {
         }
     })
 
+    
+
     if (isLoading) {
         return <Loader></Loader>
     }

@@ -82,7 +82,7 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
                         Swal.fire({
                             position: 'top-center',
                             icon: 'success',
-                            title: 'Your payment completed',
+                            title: 'Item Deleted Successfully',
                             showConfirmButton: false,
                             timer: 1500
                         })

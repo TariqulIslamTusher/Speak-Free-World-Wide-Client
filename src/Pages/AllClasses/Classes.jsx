@@ -9,9 +9,9 @@ const Classes = () => {
     const [AxiosSecure] = useAxiosSecure()
 
     const { isLoading, data = [] , refetch} = useQuery({
-        queryKey: [],
+        queryKey: ['onlyclass'],
         queryFn: async () => {
-            const res = await AxiosSecure('/class?classStatus=approved')
+            const res = await AxiosSecure('/onlyclass?classStatus=approved')
             return res.data
         }
     })
@@ -19,7 +19,7 @@ const Classes = () => {
     if (isLoading) {
         return <Loader></Loader>
     }
-
+    console.log(data);
     return (
         <div className='bg-slate-300'>
             <CommonBanner>All Our Classes</CommonBanner>

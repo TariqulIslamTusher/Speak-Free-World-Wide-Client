@@ -4,8 +4,8 @@ import { AuthContext } from '../../Components/AuthProvider/Authprovider';
 import { useNavigate } from 'react-router-dom';
 
 const useAxiosSecure = () => {
-    const { logOut } = useContext(AuthContext)
-    const navigate = useNavigate()
+    // const { signOutUser } = useContext(AuthContext)
+    // const navigate = useNavigate()
 
     const AxiosSecure = axios.create({
         baseURL: 'http://localhost:3000'
@@ -17,7 +17,7 @@ const useAxiosSecure = () => {
         // 1. interceptors request clients ------------> server
         AxiosSecure.interceptors.request.use((config) => {
             if (token) {
-                config.headers.Authorization = token
+                config.headers.authorization = token
             }
             return config;
         })
@@ -26,12 +26,13 @@ const useAxiosSecure = () => {
             return res
         }, async (err) => {
             if (err.res && (err.res.status === 401 || err.res.status === 403)) {
-                await logOut()
-                navigate('/login')
+                // await signOutUser()
+                // navigate('/login')
+                console.log('no access')
             }
             return Promise.reject(err)
         })
-    }, [logOut, navigate, AxiosSecure])
+    }, [  AxiosSecure])
 
     return [AxiosSecure]
 };

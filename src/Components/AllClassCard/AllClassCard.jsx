@@ -10,9 +10,9 @@ const AllClassCard = () => {
     const [AxiosSecure] = useAxiosSecure()
 
     const {data, isLoading} = useQuery({
-        queryKey: ['class'],
+        queryKey: ['classView'],
         queryFn: async() =>{
-            const res = await AxiosSecure('/class?classStatus=approved&sort=classView')
+            const res = await AxiosSecure('/classView')
             return res.data
         }
     })
@@ -27,7 +27,7 @@ const AllClassCard = () => {
             <SectionTitle heading='Our popular classes' subHeading='Popular Classes basis on viewer number'></SectionTitle>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {
-                    data.slice(0,6).map(Sdata => <HomeClassCard key={Sdata._id} Sdata={Sdata}></HomeClassCard>)
+                    data && data.slice(0,6).map(Sdata => <HomeClassCard key={Sdata._id} Sdata={Sdata}></HomeClassCard>)
                 }
             </div>
         </div>

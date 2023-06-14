@@ -21,10 +21,11 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
         data.classStatus = 'pending'
         data.availableSeat = parseInt(data.availableSeat)
         data.price = parseInt(data.price)
-        console.log(data);
+
         fetch(`http://localhost:3000/class/${_id}`, {
             method: 'PATCH',
             headers: {
+                authorization: `Bearer ${localStorage.getItem('access-token')}`,
                 'content-type': 'application/json'
             },
             body: JSON.stringify(data)
@@ -61,6 +62,10 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
 
         fetch(`http://localhost:3000/class/${id}`, {
             method: 'DELETE',
+            headers:{
+                authorization: `Bearer ${localStorage.getItem('access-token')}`,
+                
+            }
         })
             .then(res => res.json())
             .then(data => {

@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Components/AuthProvider/Authprovider';
 import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
 import MyEnrolledCardClass from './myEnrolledCardClass';
+import Loader from '../../../Components/Loader/Loader';
 
 const MyEnrolledClass = () => {
     const { user, loader } = useContext(AuthContext)
@@ -23,13 +24,17 @@ const MyEnrolledClass = () => {
 
     })
 
+    if(isLoading){
+        return <Loader></Loader>
+    }
+
 
     return (
         <div>
             <CommonBanner>My Enrolled Classes</CommonBanner>
             <div className='w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-5'>
                 {
-                data ? 
+                data && data.length>0 ? 
                  data.map(Sdata => <MyEnrolledCardClass Sdata={Sdata} key={Sdata._id}></MyEnrolledCardClass>)
                 :
                 

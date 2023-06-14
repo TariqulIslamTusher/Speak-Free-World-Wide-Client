@@ -10,7 +10,6 @@ export const saveUserToDB = user => {
 
     }
 
-
     fetch(`http://localhost:3000/users/${user.email}`, {
         method: 'PUT',
         headers: {
@@ -23,6 +22,8 @@ export const saveUserToDB = user => {
             console.log(data);
         })
 }
+
+
 
 // Get the role of the user
 export const getRole = async email => {

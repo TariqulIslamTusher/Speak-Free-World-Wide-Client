@@ -20,9 +20,9 @@ const InstructorSection = () => {
     const [AxiosSecure] = useAxiosSecure()
 
     const { isLoading, data = [] } = useQuery({
-        queryKey: [],
+        queryKey: ["/ourTopInst"],
         queryFn: async () => {
-            const res = await AxiosSecure('/class?classStatus=approved&sort=attendedStudent')
+            const res = await AxiosSecure('/ourTopInst')
             return res.data
         }
     })
@@ -31,6 +31,8 @@ const InstructorSection = () => {
     if (isLoading) {
         return <Loader></Loader>
     }
+
+    console.log(data);
 
     return (
         <>
@@ -60,13 +62,11 @@ const InstructorSection = () => {
                 >
                     <div className='grid grid-cols-1'>
                         {
-                            data?.slice(0,6).map(Sdata => <SwiperSlide><InstructorCard key={Sdata._id} Sdata={Sdata}></InstructorCard></SwiperSlide>)
+                            data?.slice(0, 6).map(Sdata => <SwiperSlide key={Sdata._id} ><InstructorCard Sdata={Sdata}></InstructorCard></SwiperSlide>)
                         }
                     </div>
 
                 </Swiper>
-
-
 
             </div>
 
@@ -96,7 +96,7 @@ const InstructorSection = () => {
                 >
                     <div className='grid grid-cols-1'>
                         {
-                            data?.slice(0,6).map(Sdata => <SwiperSlide><InstructorCard key={Sdata._id} Sdata={Sdata}></InstructorCard></SwiperSlide>)
+                            data?.slice(0, 6).map(Sdata => <SwiperSlide><InstructorCard key={Sdata._id} Sdata={Sdata}></InstructorCard></SwiperSlide>)
                         }
                     </div>
 

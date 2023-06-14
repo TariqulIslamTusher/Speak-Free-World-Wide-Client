@@ -13,7 +13,7 @@ const Instructors = () => {
     const {isLoading, data = [] } = useQuery({
         queryKey: [],
         queryFn: async ()=>{
-            const res = await AxiosSecure('/class')
+            const res = await AxiosSecure('/onlyclass')
             return res.data
         }
     })

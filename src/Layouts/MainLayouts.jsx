@@ -5,10 +5,13 @@ import { useContext } from 'react';
 import { AuthContext } from '../Components/AuthProvider/Authprovider';
 import Loader from '../Components/Loader/Loader';
 
+
 const MainLayouts = () => {
-    const { user } = useContext(AuthContext)
-
-
+    // const {loader} = useContext(AuthContext)
+    // if(loader){
+    //     return <Loader></Loader>
+    // }
+  
     return (
         <div>
             <Navbar></Navbar>

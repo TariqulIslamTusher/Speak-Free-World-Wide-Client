@@ -24,6 +24,7 @@ const PendingClass = ({ Sdata, refetch }) => {
     fetch(`http://localhost:3000/class/${id}`, {
       method: 'PATCH',
       headers: {
+        authorization: `Bearer ${localStorage.getItem('access-token')}`,
         'content-type': 'application/json'
       },
       body: JSON.stringify({ classStatus: 'approved' })
@@ -32,11 +33,11 @@ const PendingClass = ({ Sdata, refetch }) => {
       .then(data => {
         console.log(data);
         setLoader(false)
+        refetch()
         Swal.fire(
           'Updated!',
           'Class moved to the approved list',
           'success',
-          refetch()
         )
         setDisable(true)
         refetch()
@@ -57,6 +58,7 @@ const PendingClass = ({ Sdata, refetch }) => {
     fetch(`http://localhost:3000/class/${id}`, {
       method: 'PATCH',
       headers: {
+        authorization: `Bearer ${localStorage.getItem('access-token')}`,
         'content-type': 'application/json'
       },
       body: JSON.stringify({ feedBack: textareaValue })
@@ -83,12 +85,13 @@ const PendingClass = ({ Sdata, refetch }) => {
               'Class Denied!',
               'Class moved to the denied list',
               'success',
-              refetch()
             )
+            refetch()
             setDenyLoader(false)
             setDisable(true)
             refetch()
             console.log(data);
+            refetch()
           })
 
 
@@ -132,7 +135,7 @@ const PendingClass = ({ Sdata, refetch }) => {
 
             <div className="modal-action">
               <label htmlFor="my_modal_6" onClick={() => handleFeedBack(_id)} className="btn  btn-outline btn-ghost">Feedback</label>
-              <label htmlFor="my_modal_6" className="btn">Close!</label>
+              <label htmlFor="my_modal_6" className="btn btn-error">Close!</label>
             </div>
           </div>
         </div>

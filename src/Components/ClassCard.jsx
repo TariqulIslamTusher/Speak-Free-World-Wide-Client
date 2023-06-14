@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Navigate, useLocation, useNavigate, useNavigation } from 'react-router-dom';
 import { AuthContext } from './AuthProvider/Authprovider';
 import Rating from 'react-rating';
 import { FaExpandArrowsAlt, FaRegStar, FaStar } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import useAxiosSecure from '../CustomHook/AxiosHook/useAxiosSecure';
 import Loader from './Loader/Loader';
+import { useEffect } from 'react';
 
 const ClassCard = ({ Sdata, refetch }) => {
   // const [disable, setDisable] = useState(false)
@@ -16,6 +17,7 @@ const ClassCard = ({ Sdata, refetch }) => {
   const [AxiosSecure] = useAxiosSecure()
   const { user, role } = useContext(AuthContext)
   const location = useLocation()
+  const navigate = useNavigate()
 
 
   if (!Sdata) {
@@ -30,11 +32,11 @@ const ClassCard = ({ Sdata, refetch }) => {
 
   // useing for disabling book now btn if user booked it once
   useEffect(() => {
-    AxiosSecure(`/booking?booked=${user?.email}`)
+    AxiosSecure(`/isbooking?booked=${user?.email}`)
       .then(res => {
-        setBookedData(res.data);
+        setBookedData(true);
       })
-  }, [stateChange])
+  }, [stateChange, user])
 
 
 //   let booked =  bookedData.map(SingleBook => SingleBook.booked === user.email)
@@ -44,27 +46,23 @@ const ClassCard = ({ Sdata, refetch }) => {
 
  
 
-  const isDisable = availableSeat === 0
+  const isDisable = availableSeat === 0 
 
 
-  // console.log(prevId);
+  // console.log(user);
 
   const handleBookings = (object) => {
 
-    if(role !== 'user'){
-      return <Navigate to='/login' replace state={location}></Navigate>
+    if (!user) {
+      toast.info('You are to login first')
+      return navigate('/login', { state: location })
     }
-
+   
     setStateChange(!stateChange)
     setBtnLoad(true)
     if (availableSeat === 0) {
       setBtnLoad(false)
       return toast.warning("Can't Book in case of Non-availability of seat")
-    }
-
-    if (!user) {
-      navigate('/login')
-      location.state = { pathname: location.pathname }
     }
 
     AxiosSecure.post('/booking', object)
