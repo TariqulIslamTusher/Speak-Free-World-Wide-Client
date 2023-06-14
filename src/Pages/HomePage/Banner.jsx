@@ -1,5 +1,9 @@
 import React from 'react';
 import BannerBottom from './BannerBottom';
+import a from '../../assets/1.png'
+import e from '../../assets/2.png'
+import m from '../../assets/m.png'
+import d from '../../assets/4.png'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +15,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
+import { Link } from 'react-router-dom';
 
 
 const Banner = () => {
@@ -25,13 +30,13 @@ const Banner = () => {
                         <li className='font-bold font-mono'>Phrases useful in everyday life.</li>
                         <li className='font-bold font-mono'>Taught with video clips of real locals.</li>
                         <div className="mt-4">
-                            <button className='Cbutton w-6/12'>Get Started</button>
+                           <Link to='/classes'> <button className='Cbutton w-6/12'>Get Started</button></Link>
                         </div>
 
                     </div>
                     <Swiper
                         autoplay={{
-                            delay: 500,
+                            delay: 2000,
                             disableOnInteraction: true,
                         }}
                         spaceBetween={50}
@@ -48,10 +53,16 @@ const Banner = () => {
                                 <img src="https://mangolanguages.com/wp-content/uploads/2023/01/PL-Hero-FocusGraphic.png" alt="" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src="https://mangolanguages.com/wp-content/uploads/2023/01/PL-Hero-FocusGraphic.png" alt="" />
+                                <img src={a} alt="" />
+                            </SwiperSlide>
+                            {/* <SwiperSlide>
+                                <img src={e} alt="" />
+                            </SwiperSlide> */}
+                            <SwiperSlide>
+                                <img src={m} alt="" />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img src="https://mangolanguages.com/wp-content/uploads/2023/01/PL-Hero-FocusGraphic.png" alt="" />
+                                <img src={d} alt="" />
                             </SwiperSlide>
                        
                     </Swiper>   

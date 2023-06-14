@@ -54,7 +54,7 @@ const DashBoardCardClass = () => {
                     PendingData.length > 0 ? <>
 
                         <h2 className="font-bold text-2xl text-yellow-400 underline my-4 "> Pending</h2>
-                        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 container mx-auto'>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto'>
                             {
                                 PendingData.map(Sdata => <PendingClass Sdata={Sdata} refetch={refetch} key={Sdata._id} ></PendingClass>)
                             }

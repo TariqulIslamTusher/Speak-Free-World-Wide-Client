@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 const HomeClassCard = ({ Sdata }) => {
   const { _id, className, classImage, instructorName, instructorImage, availableSeat, price, description, instructorEmail, classStatus, classView, attendedStudent, booked, classRatings, feedBack } = Sdata
   return (
-    <div className="card w-96 bg-base-100 shadow-xl image-full">
+    <div className="card w-96 bg-base-100 shadow-xl image-full hover:scale-105 transition-all duration-500">
       <figure><img src={classImage} /></figure>
       <div className="card-body">
         <h2 className="card-title text-2xl font-bold border-b-2 border-yellow-700 pb-3">{className}</h2>
         <p className='text-xl font-bold'>Instructor: {instructorName}</p>
         <div className='leading-0'>
           <p className='text-lg'><span className='font-bold'>Available Seat:</span> {availableSeat}</p>
-          <p className='text-lg'><span className='font-bold'>Attended Students:</span> {attendedStudent}</p>
+          <p className='text-lg'><span className='font-bold'>Total View:</span> {classView}</p>
           <p className='text-lg'><span className='font-bold'>Price:</span> {price}</p>
         </div>
 
@@ -31,7 +31,7 @@ const HomeClassCard = ({ Sdata }) => {
           </div>
 
           <div>
-            <button className="Cbutton">See More</button>
+            <Link to='/classes'><button className="Cbutton">VIEW MORE</button></Link>
           </div>
 
         </div>

@@ -20,7 +20,7 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
     const onSubmit = (data) => {
         data.classStatus = 'pending'
         data.availableSeat = parseInt(data.availableSeat)
-        data.price = parseInt(data.price)
+        data.price = parseFloat(data.price)
 
         fetch(`http://localhost:3000/class/${_id}`, {
             method: 'PATCH',

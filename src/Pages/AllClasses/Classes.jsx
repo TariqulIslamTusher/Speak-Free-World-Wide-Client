@@ -4,18 +4,24 @@ import ClassCard from '../../Components/ClassCard';
 import useAxiosSecure from '../../CustomHook/AxiosHook/useAxiosSecure';
 import Loader from '../../Components/Loader/Loader';
 import { useQuery } from '@tanstack/react-query';
+import { useContext } from 'react';
+import { AuthContext } from '../../Components/AuthProvider/Authprovider';
 
 const Classes = () => {
+    const {user}= useContext(AuthContext)
     const [AxiosSecure] = useAxiosSecure()
 
     const { isLoading, data = [] , refetch} = useQuery({
-        queryKey: ['onlyclass'],
+        queryKey: ['onlyclass', user?.email],
         queryFn: async () => {
             const res = await AxiosSecure('/onlyclass?classStatus=approved')
             return res.data
         }
     })
 
+
+
+        
     if (isLoading) {
         return <Loader></Loader>
     }

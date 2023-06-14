@@ -9,7 +9,9 @@ import Loader from './Loader/Loader';
 import { useEffect } from 'react';
 
 const ClassCard = ({ Sdata, refetch }) => {
-  // const [disable, setDisable] = useState(false)
+
+
+  const [disable, setDisable] = useState(false)
   const [btnLoad, setBtnLoad] = useState(false)
   const [stateChange, setStateChange] = useState(false)
   const [bookedData, setBookedData] = useState(false)
@@ -20,44 +22,36 @@ const ClassCard = ({ Sdata, refetch }) => {
   const navigate = useNavigate()
 
 
+
+
   if (!Sdata) {
     return <Loader></Loader>
   }
 
-  const { _id, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings } = Sdata
+  const { _id, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings, classView } = Sdata
 
   const modifiedData = { booked: user?.email, prevId: _id, userEmail: user?.email, classImage, className, instructorName, availableSeat, attendedStudent, feedBack, classStatus, price, classRatings }
 
 
-
-  // useing for disabling book now btn if user booked it once
-  useEffect(() => {
-    AxiosSecure(`/isbooking?booked=${user?.email}`)
-      .then(res => {
-        setBookedData(true);
-      })
-  }, [stateChange, user])
-
-
-//   let booked =  bookedData.map(SingleBook => SingleBook.booked === user.email)
-
-
-// console.log(booked , _id);
-
- 
-
-  const isDisable = availableSeat === 0 
+  const isDisable = availableSeat === 0 || disable
 
 
   // console.log(user);
 
   const handleBookings = (object) => {
 
+    setDisable(true)
+    // console.log(_id);
+
     if (!user) {
       toast.info('You are to login first')
       return navigate('/login', { state: location })
+    } else if (user && role === 'admin' || role === "instructor") {
+      return toast.warning('Can not bookes as admin/instructor')
+    } else{
+      
     }
-   
+
     setStateChange(!stateChange)
     setBtnLoad(true)
     if (availableSeat === 0) {
@@ -67,6 +61,20 @@ const ClassCard = ({ Sdata, refetch }) => {
 
     AxiosSecure.post('/booking', object)
       .then(res => {
+
+
+        const updoc = {
+          booked: user.email,
+          classView: parseInt(classView) + 1
+        }
+        // update the booked data on classDB
+        AxiosSecure.patch(`/class/${_id}`, updoc)
+          .then(res => {
+            console.log(res.data);
+
+
+          })
+
         toast.success('Class Booked')
         console.log(res.data);
         setBtnLoad(false)

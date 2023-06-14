@@ -33,28 +33,6 @@ const MySelectedClassCard = ({ Sdata, refetch }) => {
     const handlePayNow = () => {
         // setBtnLoad(true)
         setOpenModal(true)
-
-
-        // Swal.fire({
-        //     title: 'Are you sure to Pay?',
-        //     text: "You will charge as the price mentioned",
-        //     icon: 'warning',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#059305',
-        //     cancelButtonColor: '#d33',
-        //     confirmButtonText: 'Pay Now'
-        // }).then((result) => {
-        //     if (result.isConfirmed) {
-        //         setBtnLoad(false)
-        //         Swal.fire(
-        //             'Payment Success!',
-        //             'Your file has been deleted.',
-        //             'success'
-        //         )
-        //     } else {
-        //         setBtnLoad(false)
-        //     }
-        // })
     }
 
 

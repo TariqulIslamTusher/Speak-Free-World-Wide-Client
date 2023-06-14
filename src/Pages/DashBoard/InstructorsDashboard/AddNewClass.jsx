@@ -16,7 +16,7 @@ const AddNewClass = () => {
         data.classView = 10
         data.attendedStudent = 10
         data.availableSeat = parseInt(data.availableSeat)
-        data.price = parseInt(data.price)
+        data.price = parseFloat(data.price)
         data.classRatings = parseInt(data.classRatings)
         console.log(data);
 
@@ -65,7 +65,7 @@ const AddNewClass = () => {
 
 
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2" >Photo URL</label>
+                        <label className="block text-gray-700 font-bold mb-2" >Class Photo URL</label>
                         <input className='border border-slate-500 w-full px-3 py-2 rounded-md' type="text" {...register("classImage", { required: true })} />
                         {errors.classImage && <span className='text-red-600'>This field is required</span>}
                     </div>

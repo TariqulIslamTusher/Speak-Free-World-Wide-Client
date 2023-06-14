@@ -107,6 +107,7 @@ const Login = () => {
 
                         </div>
                     </form>
+                    
                     <div className="text-center my-3">
                         <button className='btn btn-neutral w-8/12 ' onClick={googleLogin}>
                             <FaGoogle></FaGoogle> Google

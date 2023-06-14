@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { AuthContext } from '../Components/AuthProvider/Authprovider';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaHome } from 'react-icons/fa';
 import useAxiosSecure from '../CustomHook/AxiosHook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../Components/Loader/Loader';
@@ -77,7 +77,7 @@ const DashBoardLayouts = () => {
 
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/'>
-                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-black  px-5 py-2 rounded-xl border-cyan-800 text-xl font-bold transition-all duration-200'>Home Page</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-black  px-5 py-2 rounded-xl border-cyan-800 text-xl font-bold transition-all duration-200'><span className='flex items-center gap-2'><FaHome></FaHome> Home Page</span></li>
                         </NavLink>
 
 
@@ -151,7 +151,7 @@ const DashBoardLayouts = () => {
 
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/'>
-                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-black  px-5 py-2 rounded-xl border-cyan-800 text-xl font-bold transition-all duration-200'>Home Page</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-black  px-5 py-2 rounded-xl border-cyan-800 text-xl font-bold transition-all duration-200'><span className='flex items-center gap-2'><FaHome></FaHome> Home Page</span></li>
                         </NavLink>
 
 
@@ -227,7 +227,7 @@ const DashBoardLayouts = () => {
 
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "DSactive" : ""} to='/'>
-                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-black  px-5 py-2 rounded-xl border-cyan-800 text-xl font-bold transition-all duration-200'>Home Page</li>
+                            <li className='hover:border-b-2 hover:bg-yellow-300 hover:shadow-xl text-black  px-5 py-2 rounded-xl border-cyan-800 text-xl font-bold transition-all duration-200'><span className='flex items-center gap-2'><FaHome></FaHome> Home Page</span></li>
                         </NavLink>
 
 

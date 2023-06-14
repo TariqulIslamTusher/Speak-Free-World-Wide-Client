@@ -82,6 +82,7 @@ const CheckoutForm = ({ modifiedData, setOpenModal, refetch }) => {
 
         const paymentInfo = {
           ...modifiedData,
+          email: user.email,
           transactionId: paymentIntent.id,
           date: new Date()
         }

@@ -4,15 +4,22 @@ const InstructorCard = ({ Sdata }) => {
     const { _id, className, classImage, instructorName, instructorImage, availableSeat, price, instructorEmail, classStatus, classView, attendedStudent, booked, classRatings, feedBack } = Sdata
 
     return (
-        <div className="card w-8/12 md:w-full mx-auto px-6 bg-base-100 shadow-xl">
+        <div className="card w-8/12 md:w-full group mx-auto px-5 bg-base-100 shadow-xl hover:border hover:border-yellow-500 transition-all duration-500">
             <figure className="px-10 pt-10">
-                <img src={instructorImage} className="rounded-xl w-full object-cover object-center" />
+                <img src={instructorImage} className="rounded-full group-hover:scale-105 transition-all duration-300 shadow-lg w-full object-cover object-center" />
             </figure>
             <div className="card-body items-center text-center">
-                <h2 className="card-title">{attendedStudent}</h2>
-                <p>{classRatings}</p>
-                <div className="card-actions">
-                    <button className="btn btn-primary">Buy Now</button>
+                <div className='bg-slate-100 mx-auto text-center p-4 w-full rounded-xl'>
+                    <h2 className="card-title lg:text-2xl ">{instructorName}</h2>
+                    <div className='text-left font-bold'>
+                        <p className='flex items-center'>Email: {instructorEmail}</p>
+                        <p className='flex items-center'>Total Student Appear: {attendedStudent}</p>
+                        <p className='flex items-center'>Total Class: {parseInt(classRatings)}</p>
+                        <p className='flex items-center'>Avaiable Seat: {availableSeat}</p>
+                    </div>
+                </div>
+                <div>
+                    <button className="Cbutton">Details</button>
                 </div>
             </div>
         </div>

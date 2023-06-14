@@ -14,9 +14,8 @@ const MyEnrolledClass = () => {
 
 
     // collect data from enrolled database
-    const { data, isLoading } = useQuery({
+    const { data, isLoading , refetch} = useQuery({
         queryKey: ['enrolled', user.email],
-        enabled: !loader,
         queryFn: async () => {
             const res = await AxiosSecure(`/enrolled?email=${user.email}`)
             return res.data;
@@ -28,6 +27,7 @@ const MyEnrolledClass = () => {
         return <Loader></Loader>
     }
 
+    console.log(data);
 
     return (
         <div>
@@ -35,7 +35,7 @@ const MyEnrolledClass = () => {
             <div className='w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-5'>
                 {
                 data && data.length>0 ? 
-                 data.map(Sdata => <MyEnrolledCardClass Sdata={Sdata} key={Sdata._id}></MyEnrolledCardClass>)
+                 data.map(Sdata => <MyEnrolledCardClass refetch={refetch} Sdata={Sdata} key={Sdata._id}></MyEnrolledCardClass>)
                 :
                 
                 <NoDataFound>NO Enrolled Classes</NoDataFound>

@@ -32,3 +32,11 @@ export const getRole = async email => {
     return data[0].role
    
 }
+
+// Get the role of the user
+export const AllClassData = async () => {
+    const res = await fetch('http://localhost:3000/onlyclass')
+    const data = await res.json()
+    return data
+   
+}

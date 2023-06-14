@@ -3,7 +3,7 @@ import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
-const MyEnrolledCardClass = ({ Sdata }) => {
+const MyEnrolledCardClass = ({ Sdata ,refetch}) => {
 
     const { _id, className, classImage, instructorName, instructorImage, availableSeat, price, description, instructorEmail, classStatus, classView, attendedStudent, booked, classRatings, feedBack } = Sdata
 
