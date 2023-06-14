@@ -8,7 +8,7 @@ const TableRow = ({ Sdata, index }) => {
     const { _id, className, classImage, instructorName, instructorImage, availableSeat, price, instructorEmail, classStatus, classView, attendedStudent, booked, classRatings, feedBack } = Sdata
 
     useEffect(() => {
-        fetch(`http://localhost:3000/onlyclass?instructorName=${instructorName}`)
+        fetch(`https://speak-free-server.vercel.app/onlyclass?instructorName=${instructorName}`)
             .then(res => res.json())
             .then(data => {
                 setTotalClass(data)

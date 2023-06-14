@@ -9,7 +9,6 @@ import Register from "./Pages/LogAndReg/Register";
 import Instructors from "./Pages/Instructors/Instructors";
 import Classes from "./Pages/AllClasses/Classes";
 import DashBoardLayouts from "./Layouts/DashbordLayouts";
-import MySelectedClass from "./Pages/DashBoard/UserDashboardPages/mySelectedClass";
 import MyEnrolledClass from "./Pages/DashBoard/UserDashboardPages/myEnrolledClass";
 import ApproveClasses from "./Pages/DashBoard/AdminDashboard/AllDashBoardClasses/ApprovAndPendingClass/ApproveClasses";
 import ManageUser from "./Pages/DashBoard/AdminDashboard/ManageUser";
@@ -22,6 +21,7 @@ import PrivateRoutes from "./Pages/PrivateRoutes/PrivateRoutes";
 import IsAdmin from "./Pages/PrivateRoutes/IsAdmin";
 import IsInstructor from "./Pages/PrivateRoutes/IsInstructor";
 import IsUser from "./Pages/PrivateRoutes/IsUser";
+import MySelectedClass from "./Pages/DashBoard/UserDashboardPages/MySelectedClass";
 
 
 export const router = createBrowserRouter([
@@ -55,6 +55,7 @@ export const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <DashBoardLayouts/>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/dashboard',

@@ -52,7 +52,7 @@ const Authprovider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currUser) => {
             setUser(currUser)
             if (currUser?.email) {
-                // fetch('http://localhost:3000/jwt', {
+                // fetch('https://speak-free-server.vercel.app/jwt', {
                 //     method: 'POST',
                 //     headers: {
                 //         'content-type': 'application/json'

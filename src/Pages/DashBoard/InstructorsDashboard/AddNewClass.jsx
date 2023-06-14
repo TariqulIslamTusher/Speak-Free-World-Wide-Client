@@ -20,7 +20,7 @@ const AddNewClass = () => {
         data.classRatings = parseInt(data.classRatings)
         console.log(data);
 
-        fetch('http://localhost:3000/class', {
+        fetch('https://speak-free-server.vercel.app/class', {
             method: 'POST',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('access-token')}`,

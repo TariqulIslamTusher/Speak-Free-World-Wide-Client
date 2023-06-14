@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -16,6 +16,11 @@ const Register = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
+    const [passwordRegex, setPasswordRegex] = useState(/^.*(?=.*[A-Z])(?=.*[!@#$%^&*]).*$/);
+
+    useEffect(() => {
+        setPasswordRegex(/^.*(?=.*[A-Z])(?=.*[!@#$%^&*]).*$/);
+    }, []);
 
     const onSubmit = (data) => {
         setLoader(true)
@@ -132,9 +137,14 @@ const Register = () => {
                             <label className="block text-gray-700 font-bold mb-2" htmlFor="password">
                                 Password
                             </label>
-                            <input className='border border-slate-500 w-full px-3 py-2 rounded-md' type="password" placeholder="Password" {...register("password", { required: true, minLength: 6 })} />
+                            <input className='border border-slate-500 w-full px-3 py-2 rounded-md' type="password" placeholder="Password" {...register("password", { required: true, minLength: 6, pattern: passwordRegex})} />
                             {errors.password?.type === 'required' && <p className='text-red-500'>Password is required.</p>}
                             {errors.password?.type === 'minLength' && <p className='text-red-500'>Password must have at least 6 caracters</p>}
+                            {errors.password?.type === 'pattern' && (
+                                <p className='text-red-500'>
+                                    Password must contain at least one uppercase letter and one symbol (!@#$%^&*).
+                                </p>
+                            )}
                         </div>
                         {/* confirmed password */}
                         <div className="mb-6">
@@ -162,10 +172,10 @@ const Register = () => {
 
                         <div className='text-center '>
                             {
-                                loader ? <div className='Cbutton mx-auto w-5/12 '><FaExpandArrowsAlt className='animate-spin'></FaExpandArrowsAlt></div> 
-                                : 
-                                
-                                <input className='Cbutton mx-auto w-8/12 ' type="submit" value='Register' />
+                                loader ? <div className='Cbutton mx-auto w-5/12 '><FaExpandArrowsAlt className='animate-spin'></FaExpandArrowsAlt></div>
+                                    :
+
+                                    <input className='Cbutton mx-auto w-8/12 ' type="submit" value='Register' />
                             }
 
                         </div>

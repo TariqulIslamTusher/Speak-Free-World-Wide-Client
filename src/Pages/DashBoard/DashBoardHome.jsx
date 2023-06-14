@@ -9,14 +9,19 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../CustomHook/AxiosHook/useAxiosSecure';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Loader from '../../Components/Loader/Loader';
 
 const DashBoardHome = () => {
-    const { role, user } = useContext(AuthContext)
+
+
+    const { role, user,loader } = useContext(AuthContext)
     const [AxiosSecure] = useAxiosSecure()
 
     const [alldata, setalldata] = useState([])
 
-
+    if(loader){
+        return <Loader></Loader>
+    }
 
    
   

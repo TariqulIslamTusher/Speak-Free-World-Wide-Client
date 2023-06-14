@@ -17,7 +17,7 @@ const DeniedClass = ({ Sdata, refetch }) => {
     const handleFeedBack = (id) => {
         let textareaValue = textareaRef.current.value;
 
-        fetch(`http://localhost:3000/class/${id}`, {
+        fetch(`https://speak-free-server.vercel.app/class/${id}`, {
             method: 'PATCH',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('access-token')}`,

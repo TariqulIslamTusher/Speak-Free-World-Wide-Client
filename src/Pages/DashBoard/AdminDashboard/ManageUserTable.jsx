@@ -22,7 +22,7 @@ const ManageUserTable = ({ Sdata, index, refetch }) => {
             setLoader(false)
             if (result.isConfirmed) {
                 // patch the user role to update it
-                fetch(`http://localhost:3000/users/${id}`, {
+                fetch(`https://speak-free-server.vercel.app/users/${id}`, {
                     method: 'PATCH',
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('access-token')}`,
@@ -61,7 +61,7 @@ const ManageUserTable = ({ Sdata, index, refetch }) => {
             setAdminLoader(false)
             if (result.isConfirmed) {
                 // patch the user role to update it
-                fetch(`http://localhost:3000/users/${id}`, {
+                fetch(`https://speak-free-server.vercel.app/users/${id}`, {
                     method: 'PATCH',
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('access-token')}`,

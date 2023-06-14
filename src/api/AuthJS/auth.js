@@ -10,7 +10,7 @@ export const saveUserToDB = user => {
 
     }
 
-    fetch(`http://localhost:3000/users/${user.email}`, {
+    fetch(`https://speak-free-server.vercel.app/users/${user.email}`, {
         method: 'PUT',
         headers: {
             "content-type": "application/json"
@@ -27,7 +27,7 @@ export const saveUserToDB = user => {
 
 // Get the role of the user
 export const getRole = async email => {
-    const res = await fetch(`http://localhost:3000/users?email=${email}`)
+    const res = await fetch(`https://speak-free-server.vercel.app/users?email=${email}`)
     const data = await res.json()
     return data[0].role
    
@@ -35,7 +35,7 @@ export const getRole = async email => {
 
 // Get the role of the user
 export const AllClassData = async () => {
-    const res = await fetch('http://localhost:3000/onlyclass')
+    const res = await fetch('https://speak-free-server.vercel.app/onlyclass')
     const data = await res.json()
     return data
    

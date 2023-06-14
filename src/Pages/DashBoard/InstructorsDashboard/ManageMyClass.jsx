@@ -22,7 +22,7 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
         data.availableSeat = parseInt(data.availableSeat)
         data.price = parseFloat(data.price)
 
-        fetch(`http://localhost:3000/class/${_id}`, {
+        fetch(`https://speak-free-server.vercel.app/class/${_id}`, {
             method: 'PATCH',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('access-token')}`,
@@ -60,7 +60,7 @@ const ManageMyClass = ({ singleData, index, refetch }) => {
     // =======Handling of Delete methodes================
     const handleDelete = (id) => {
 
-        fetch(`http://localhost:3000/class/${id}`, {
+        fetch(`https://speak-free-server.vercel.app/class/${id}`, {
             method: 'DELETE',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('access-token')}`,

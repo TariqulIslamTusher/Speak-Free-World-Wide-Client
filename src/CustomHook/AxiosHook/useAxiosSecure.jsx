@@ -8,7 +8,7 @@ const useAxiosSecure = () => {
     // const navigate = useNavigate()
 
     const AxiosSecure = axios.create({
-        baseURL: 'http://localhost:3000'
+        baseURL: 'https://speak-free-server.vercel.app'
     })
 
 

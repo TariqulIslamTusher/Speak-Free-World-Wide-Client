@@ -21,7 +21,7 @@ const PendingClass = ({ Sdata, refetch }) => {
   const handleApprovedClassStatus = (id) => {
     setLoader(true)
     // patch the update the class status
-    fetch(`http://localhost:3000/class/${id}`, {
+    fetch(`https://speak-free-server.vercel.app/class/${id}`, {
       method: 'PATCH',
       headers: {
         authorization: `Bearer ${localStorage.getItem('access-token')}`,
@@ -56,7 +56,7 @@ const PendingClass = ({ Sdata, refetch }) => {
       return toast.error("Feedback can't be empty")
     }
 
-    fetch(`http://localhost:3000/class/${id}`, {
+    fetch(`https://speak-free-server.vercel.app/class/${id}`, {
       method: 'PATCH',
       headers: {
         authorization: `Bearer ${localStorage.getItem('access-token')}`,
@@ -73,7 +73,7 @@ const PendingClass = ({ Sdata, refetch }) => {
 
         // denied functionssssssss
 
-        fetch(`http://localhost:3000/class/${id}`, {
+        fetch(`https://speak-free-server.vercel.app/class/${id}`, {
           method: 'PATCH',
           headers: {
             authorization: `Bearer ${localStorage.getItem('access-token')}`,

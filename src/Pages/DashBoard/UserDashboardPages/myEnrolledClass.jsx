@@ -22,7 +22,9 @@ const MyEnrolledClass = () => {
         }
 
     })
-
+    if(loader){
+        return <Loader></Loader>
+    }
     if(isLoading){
         return <Loader></Loader>
     }
@@ -38,7 +40,10 @@ const MyEnrolledClass = () => {
                  data.map(Sdata => <MyEnrolledCardClass refetch={refetch} Sdata={Sdata} key={Sdata._id}></MyEnrolledCardClass>)
                 :
                 
-                <NoDataFound>NO Enrolled Classes</NoDataFound>
+                <div className='flex justify-center items-center'>
+                    <NoDataFound>NO Enrolled Classes</NoDataFound>
+                </div>
+                
                 }
             </div>
         </div>
