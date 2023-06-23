@@ -19,7 +19,7 @@ export const saveUserToDB = user => {
     })
         .then(res => res.json())
         .then(data => {
-            https://speak-free-server.vercel.app(data);
+           
         })
 }
 

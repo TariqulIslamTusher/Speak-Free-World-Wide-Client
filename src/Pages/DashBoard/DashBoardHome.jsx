@@ -14,12 +14,12 @@ import Loader from '../../Components/Loader/Loader';
 const DashBoardHome = () => {
 
 
-    const { role, user,loader } = useContext(AuthContext)
+    const { role, user ,loader } = useContext(AuthContext)
     const [AxiosSecure] = useAxiosSecure()
 
     const [alldata, setalldata] = useState([])
 
-    if(loader){
+    if(loader || !user){
         return <Loader></Loader>
     }
 
@@ -44,8 +44,9 @@ const DashBoardHome = () => {
     const pending = alldata.filter(sData => sData.classStatus === 'pending')
     const deny = alldata.filter(sData => sData.classStatus === 'deny')
 
+    console.log(role, user);
 
-    if (role === 'admin') {
+    if (role && role === 'admin') {
         return (
             <div>
                 <CommonBanner> <div className="flex items-center  gap-3"><FaHome className='text-white'></FaHome>  DASHBOARD</div> </CommonBanner>
@@ -86,10 +87,7 @@ const DashBoardHome = () => {
             </div>
         );
     }
-
-
-
-    if (role === 'instructor') {
+    else if (role && role === 'instructor') {
         return (
             <div>
                 <CommonBanner> <div className="flex items-center  gap-3"><FaHome className='text-white'></FaHome>  DASHBOARD</div> </CommonBanner>
@@ -124,9 +122,7 @@ const DashBoardHome = () => {
             </div>
         );
     }
-
-
-    if (role === 'user') {
+    else if (role && role === 'user') {
         return (
             <div>
                 <CommonBanner> <div className="flex items-center  gap-3"><FaHome className='text-white'></FaHome>  DASHBOARD</div> </CommonBanner>
@@ -155,6 +151,9 @@ const DashBoardHome = () => {
 
             </div>
         );
+    }
+    else {
+        <Loader></Loader>
     }
 };
 

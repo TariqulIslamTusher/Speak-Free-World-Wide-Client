@@ -19,7 +19,7 @@ const EnrolledHistory = () => {
         queryKey: ['enrolled', user.email],
         enabled: !loader,
         queryFn: async () => {
-            const res = await AxiosSecure(`/enrolled?email`)
+            const res = await AxiosSecure(`/enrolled?email=${user.email}`)
             return res.data
         }
     })

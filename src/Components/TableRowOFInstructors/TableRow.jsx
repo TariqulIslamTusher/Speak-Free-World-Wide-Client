@@ -36,7 +36,7 @@ const TableRow = ({ Sdata, index }) => {
                 <th>
                     {/* TODOS : SEE ONLY THIS CLASSES */}
                     <Link>
-                        <button onClick={() => //console.log(_id)} className="btn btn-neutral btn-outline btn-xs">See Classes</button>
+                        <button onClick={() => console.log(_id)} className="btn btn-neutral btn-outline btn-xs">See Classes</button>
                     </Link>
                 </th>
             </tr>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const HomeClassCard = ({ Sdata }) => {
   const { _id, className, classImage, instructorName, instructorImage, availableSeat, price, description, instructorEmail, classStatus, classView, attendedStudent, booked, classRatings, feedBack } = Sdata
   return (
-    <div className="card w-96 bg-base-100 shadow-xl image-full hover:scale-105 transition-all duration-500">
+    <div className="card w-full px-2  bg-base-100 shadow-xl image-full hover:scale-105 transition-all duration-500">
       <figure><img src={classImage} /></figure>
       <div className="card-body">
         <h2 className="card-title text-2xl font-bold border-b-2 border-yellow-700 pb-3">{className}</h2>
@@ -17,7 +17,7 @@ const HomeClassCard = ({ Sdata }) => {
           <p className='text-lg'><span className='font-bold'>Price:</span> {price}</p>
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           <div className='flex items-center justify-between gap-3'>
             <Rating
               className='text-2xl text-yellow-500 md:ml-auto'
